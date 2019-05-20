@@ -1,0 +1,451 @@
+\title{Monografia - Janderson}
+
+\documentclass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte
+    oneside,			% Tipo de impressão, frente-verso(twoside) ou apenas frente(oneside)
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	% -- opções do pacote babel --    
+	english,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento    
+	]{abntex2}
+    
+    %\renewcommand{\ABNTEXpartfontsize}{\normalsize}
+	%\renewcommand{\ABNTEXchapterfontsize}{ \large}
+	%\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
+	%\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{lastpage}			% Usado pela Ficha catalográfica
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+\usepackage{todonotes}
+\usepackage{tabularx}
+
+
+\definecolor{algColor}{RGB}{255,206,206} % rgb(255, 206, 206)
+
+% Pacotes para algoritmos/pseudo-código
+\usepackage{listings}
+
+\renewcommand{\lstlistingname}{Programa}
+
+\lstset
+{ %Formatting for code in appendix
+    language=C,
+    basicstyle=\footnotesize,
+    numbers=left,
+    stepnumber=1,
+    frame = single,
+    showstringspaces=false,
+    tabsize=2,
+    breaklines=true,
+    xleftmargin=10pt,
+    breakatwhitespace=false,
+    extendedchars=true,
+    literate={á}{{\'a}}1 
+             {ã}{{\~a}}1
+             {é}{{\'e}}1
+             {í}{{\'i}}1
+             {õ}{{\~o}}1
+             {ç}{{\c{c}}}1,
+}
+
+\renewcommand{\lstlistlistingname}{Lista de códigos}
+
+% Configura a ``Lista de Códigos'' conforme as regras da ABNT (para abnTeX2)
+\begingroup\makeatletter
+\let\newcounter\@gobble\let\setcounter\@gobbletwo
+  \globaldefs\@ne \let\c@loldepth\@ne
+  \newlistof{listings}{lol}{\lstlistlistingname}
+  \newlistentry{lstlisting}{lol}{0}
+\endgroup
+
+\renewcommand{\cftlstlistingaftersnum}{\hfill--\hfill}
+
+\let\oldlstlistoflistings\lstlistoflistings
+\renewcommand{\lstlistoflistings}{%
+   \begingroup%
+   \let\oldnumberline\numberline%
+   \renewcommand{\numberline}{\lstlistingname\space\oldnumberline}%
+   \oldlstlistoflistings%
+   \endgroup}
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+
+
+% ---
+% Pacotes de citações
+% ---
+%\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf, abnt-etal-cite=2]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+\usepackage{abntex_ufrr_dcc}
+
+
+% PACOTES DE ALGORITMO
+
+\usepackage{algpseudocode,algorithm}
+% Declaracoes em Português
+
+\algrenewcommand\algorithmicend{\textbf{FIM}}
+\algrenewcommand\algorithmicdo{\textbf{FAÇA}}
+\algrenewcommand\algorithmicwhile{\textbf{ENQUANTO}}
+\algrenewcommand\algorithmicfor{\textbf{PARA}}
+\algrenewcommand\algorithmicforall{\textbf{PARA TODO}}
+\algrenewcommand\algorithmicif{\textbf{SE}}
+\algrenewcommand\algorithmicthen{\textbf{ENTÃO}}
+\algrenewcommand\algorithmicelse{\textbf{SENÃO}}
+\algrenewcommand\algorithmicreturn{\textbf{RETORNE}}
+\algrenewcommand\algorithmicfunction{\textbf{FUNÇÃO}}
+% New definitions
+\algnewcommand\algorithmicswitch{\textbf{ESCOLHA}}
+\algnewcommand\algorithmiccase{\textbf{CASO}}
+\algnewcommand\algorithmicassert{\texttt{assert}}
+\algnewcommand\Assert[1]{\State \algorithmicassert(#1)}%
+% New "environments"
+\algdef{SE}[SWITCH]{Switch}{EndSwitch}[1]{\algorithmicswitch\ #1\ \algorithmicdo}{\algorithmicend\ \algorithmicswitch}%
+\algdef{SE}[CASE]{Case}{EndCase}[1]{\algorithmiccase\ #1}{\algorithmicend\ \algorithmiccase}%
+\algtext*{EndSwitch}%
+\algtext*{EndCase}%
+
+
+% Rearranja os finais de cada estrutura
+\algrenewtext{EndWhile}{\algorithmicend\ \algorithmicwhile}
+\algrenewtext{EndFor}{\algorithmicend\ \algorithmicfor}
+\algrenewtext{EndIf}{\algorithmicend\ \algorithmicif}
+\algrenewtext{EndFunction}{\algorithmicend\ \algorithmicfunction}
+
+% O comando For, a seguir, retorna 'para #1 -- #2 até #3 faça'
+\algnewcommand\algorithmicto{\textbf{até}}
+\algrenewtext{For}[3]%
+{\algorithmicfor\ #1 $\gets$ #2 \algorithmicto\ #3 \algorithmicdo}
+
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+%\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+%\renewcommand{\backref}{}
+% Define os textos da citação
+%\renewcommand*{\backrefalt}[4]{
+%	\ifcase #1 %
+%		Nenhuma citação no texto.%
+%	\or
+%		Citado na página #2.%
+%	\else
+%		Citado #1 vezes nas páginas #2.%
+%	\fi}%
+% ---
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{\large{Aplicação de Técnicas de Mineração de Dados para Avaliar os Dados Socioeconômicos dos Candidatos do Vestibular da UFRR de 2017 para Classificar o seu Desempenho}}
+
+\autor{JANDERSON ALMEIDA DOS SANTOS}
+\local{Boa Vista - RR}
+\data{2018}
+\orientador{Delfa Mercedes Huatuco Zuasnabar}
+
+\tipotrabalho{Monografia}
+
+\preambulo{Monografia de Graduação apresentada ao Departamento de Ciência da Computação da Universidade Federal de Roraima como requisito parcial para a obtenção do grau de Bacharel em Ciência da Computação.}
+
+%Trabalho de conclusão de curso  na área de Verificação de Software desenvolvido na UFRR com o %objetivo \textcolor{red}{VERIFICAR O PADRÃO DOS OUTROS TCC} de gerar casos de teste para %sistemas embarcados críticos	
+
+% ---
+
+%-- Informações de dado para a FOLHA DE APROVAÇÃO
+\renewcommand{\dataDefesa}{14 de Dezembro de 2018}
+\renewcommand{\orientadorBanca}{Prof. MSc.Delfa Mercedes Huatuco Zuasnabar}
+\renewcommand{\primeiroMembroBanca}{Prof. MSc. Miguel Raymundo Flores Santibañez}
+\renewcommand{\segundoMembroBanca}{Prof. MSc. Acauan Cardoso Ribeiro}
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      	% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+\imprimirfolhaderosto
+% ---
+
+% ---
+% Inserir folha de aprovação
+% ---
+\imprimirfolhadeaprovacao
+% ---
+% Dedicatória
+% ---
+\begin{dedicatoria}
+   \vspace*{\fill}
+   \centering
+   \noindent
+   \textit{Este trabalho é dedicado especialmente para a minha família, que sempre me apoiou nos momentos mais difíceis dessa vida.} \vspace*{\fill}
+\end{dedicatoria}
+% ---
+
+% ---
+% Agradecimentos
+% ---
+\begin{agradecimentos}
+Agradeço, em primeiro lugar, a Deus, meu pai e minha mãe, por estarem sempre comigo, me apoiando nessa longa caminhada que enfrentamos na vida, também, pela compreensão e investimento durante toda a minha vida acadêmica, ao meu irmão e irmã que sempre me apoiaram e que deram sua atenção para me escutar sempre e agradeço também a toda a minha família.
+\par
+A minha orientadora, professora Delfa, por aceitar a me ajudar na execução deste trabalho, e junto com o coorientador professor Miguel me daram todo o suporte e auxílio. Agradeço aos demais professores da computação que participaram da minha formação, em especial ao professor Herbert Rocha, pela paciência que sempre teve em tirar as minhas dúvidas e pela amizade, os professores Felipe Lobo e Filipe Dwan pelos conselhos que me deram durante o meu curso e ao professor Acauan Cardoso, por todo atenção e disponibilidade que teve em me ajudar no início do meu projeto, onde me deu rumo para que eu concluísse este trabalho.
+\par
+Agradeço aos amigos do laboratório da NOKIA e Maloca Digital pelo convivio e amizade, especialmente ao Miller Raycell que teve a paciência de ficar lendo o meu projeto a cada parte que eu concluía e na ajuda da tradução do resumo deste trabalho, agradeço também ao meu amigo Luarkian Kaype por sempre tirar as minhas dúvidas no decorrer deste curso. E por fim, agradeço aos demais amigos que conheci no curso e que contribuíram e participaram da minha vida acadêmica de alguma forma: Paulo Victor, Arthur Melo, Anny Walker, Rafael de Sá e entre muitos outros.
+
+
+
+
+\end{agradecimentos}
+% ---
+
+% ---
+% Epígrafe
+% ---
+\begin{epigrafe}
+    \vspace*{\fill}
+	\begin{flushright}
+		\textit{Quando as pessoas se machucam, elas aprendem a odiar… quando as pessoas machucam as outras, eles viram odiados e atormentados com a culpa. Mas saiba que a dor permite às pessoas a serem bondosas. A dor permite que todo mundo cresça... e como você cresce é sua responsabilidade. (Masashi Kishimoto)}
+	\end{flushright}
+\end{epigrafe}
+% ---
+
+% ---
+% RESUMOS
+% ---
+
+% resumo em português
+\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
+\begin{resumo}
+    A mineração de dados tem se tornado uma área crescente durante os últimos anos, devido ao grande crescimento da quantidade de dados que é gerado e a necessidade do mercado por técnicas que sejam eficazes de reconhecer e extrair o conhecimento destes grandes repositórios de dados de forma automatizada. Como a informação vem desempenhando um papel importante no sucesso e desenvolvimento das grandes organizações como instituições, empresas e entre outros, os métodos de suporte de decisão vem constantemente se tornando presente na realidade dessas organizações, tornando mais seguro as tarefas de colher, tratar, analisar e utilizar as informações resultando em um processo eficaz. Entretanto, apesar dessas informações resumidas e relevantes para a tomada de decisão possuírem um volume menor de dados, elas não se encontram disponíveis no banco, exigindo assim que sejam extraídas a partir de grandes volumes de dados. Com isso, para o processo de extração de conhecimento a partir de grandes bases de dados o KDD surgiu, possuindo em uma de suas etapas a mineração de dados, que utiliza métodos, técnicas e aprendizagem de máquina, aplicando nessa base de dados para poder encontrar padrões em dados que possam auxiliar à tomada de decisão. Nesse contexto, este trabalho apresenta uma aplicação de técnicas de mineração de dados sobre os candidatos ao processo seletivo do vestibular ocorrido em novembro de 2017 da UFRR, com o objetivo de identificar os fatores que influenciam o desempenho da prova dos vestibulandos, e com os resultados obtidos, poderão ser utilizados para traçar os perfis dos candidatos ao processo seletivo do vestibular da UFRR, com a finalidade de levantar informações relevantes que forneçam assistência para a universidade na tomada de decisão.
+
+ \vspace{\onelineskip}
+ 
+ \noindent 
+ \textbf{Palavras-chaves}: KDD, Mineração de Dados, Mineração de Dados Educacional, Aprendizagem de Máquina.
+\end{resumo}
+
+\begin{resumo}[Abstract]
+ \begin{otherlanguage*}{english}
+   Data mining has become a growing area over the last few years due to the large growth in the amount of data that is generated and the need of the market for techniques that are effective in recognizing and extracting knowledge from these large repositories of data in an automated way. As information has played an important role in the success and development of large organizations such as institutions, companies and others, decision support methods are constantly becoming present in the reality of these organizations, making the tasks of collecting, treating, analyzing and use the information resulting in an effective process. However, although this summary and decision-relevant information has a smaller volume of data, it is not available in the database, thus requiring it to be extracted from large volumes of data. With this, for the process of knowledge extraction from large databases, KDD arose, having in one of its stages the data mining, using methods, techniques and machine learning, applying in this database to be able to find patterns in data that can aid in decision making. In this context, this paper presentes an application of data mining techniques on the candidates for the vestibular selective process that occurred in November 2017 of UFRR, in order to identify the factors that influence the performance of the vestibular test, and the results obtained, can be used to trace the profiles of the candidates for the UFRR entrance exam selective process, in order to obtain relevant information that provides assistance to the university in decision making. 
+
+   \vspace{\onelineskip}
+ 
+   \noindent 
+   \textbf{Key-words}: KDD, Data Mining, Educational Data Mining, Machine Learning.
+ \end{otherlanguage*}
+\end{resumo}
+% ---
+% inserir lista de ilustrações
+% ---
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+% ---
+
+% ---
+% inserir lista de tabelas
+% ---
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+% ---
+
+% ---
+% inserir lista de abreviaturas e siglas
+% ---
+\begin{siglas}
+  \item[KDD] \textit{Knowledge Discovery in Database}
+  \item[MD] Mineração de Dados
+  \item[MDE] Mineração de Dados Educacional
+  \item[MEC] Ministério da Educação
+  \item[CVS] \textit{Comma-Separated Values}
+  \item[DM] \textit{Data Mining}
+  \item[KNN] \textit{K-Nerarest Neighbor}
+  \item[MPL] \textit{Multi-Layer Perceptron}
+  \item[SVM] \textit{Support Vector Machines}
+  \item[EDM] \textit{Educational Data Mining}
+  \item[EaD] Ensino a Distância
+  \item[IES] Instituições de Ensino Superior
+  \item[ENEM] Exame Nacional do Ensino Médio
+  \item[PISA] \textit{Programe for International Students Assessment}
+  \item[INEP] Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira
+  \item[WEKA] \textit{Waikato Environment for Knowledge Analysis}
+  \item[CPV] Comissão Permanente de Vestibular
+  \item[MDS] Ministério do Desenvolvimento Social     
+\end{siglas}
+% ---
+
+% ---
+% inserir lista de símbolos
+% ---
+% \begin{simbolos}  
+%   \item[$ \Gamma $] \todo{Atualizar esta lista!} Letra grega Gama
+%   \item[$ \Lambda $] Lambda
+%   \item[$ \zeta $] Letra grega minúscula zeta
+%   \item[$ \in $] Pertence
+% \end{simbolos}
+% % ---
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+% ----------------------------------------------------------
+% Introdução
+% ----------------------------------------------------------
+\chapter{INTRODUÇÃO}
+\input{Sections/Introducao.tex}
+
+% ----------------------------------------------------------
+% Conceitos e Definições
+% ----------------------------------------------------------
+\chapter{CONCEITOS E DEFINIÇÕES}
+\input{Sections/Conceitos_e_definicoes.tex}
+
+% ----------------------------------------------------------
+% Revisão de Literatura
+% ----------------------------------------------------------
+\chapter{TRABALHOS CORRELATOS}
+\input{Sections/Trabalhos_correlatos.tex}
+
+
+% ----------------------------------------------------------
+% Detalhes de Desenvolvimento do Projeto
+% ----------------------------------------------------------
+\chapter{MÉTODO PROPOSTO}
+\input{Sections/Metodologia.tex}
+
+% ----------------------------------------------------------
+% Cronograma
+% ----------------------------------------------------------
+\chapter{PROJETO}
+\input{Sections/Projeto.tex}
+
+% ----------------------------------------------------------
+% Cronograma
+% ----------------------------------------------------------
+\chapter{AVALIAÇÃO EXPERIMENTAL}
+\input{Sections/Avaliacao.tex}
+
+% ----------------------------------------------------------
+% Cronograma
+% ----------------------------------------------------------
+\chapter{CRONOGRAMA}
+\input{Sections/Cronograma.tex}
+
+% ----------------------------------------------------------
+% Resultados -- Pode vir junto com discussão
+% ----------------------------------------------------------
+%\chapter{RESULTADOS EXPERIMENTAIS}
+%\input{Sections/Resultados.tex}
+%\chapter{DISCUSSÃO}
+
+% ----------------------------------------------------------
+% Conclusão
+% ----------------------------------------------------------
+\chapter{CONSIDERAÇÕES FINAIS}
+\input{Sections/Consideracoes_parciais.tex}
+%\newpage
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{main}
+
+%---------------------------------------------------------------------
+% INDICE REMISSIVO
+%---------------------------------------------------------------------
+%\phantompart
+%\printindex
+%---------------------------------------------------------------------
+
+\end{document}
+
