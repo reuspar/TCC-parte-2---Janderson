@@ -33,7 +33,7 @@
 \textcolor{red}{O motivo dessa formatação demonstrado na Figura 20 é que o WEKA identifica a primeira linha como os atributos e as linhas subsequentes os dados relacionados a esses atributos. Como o software trabalha com formato de arquivo próprio denominado \textit{Atribute-Relation File Format} (arff), foi preciso salvar o arquivo que estava no formato xlsx para o formato csv (que separa colunas por ponto e vírgula), pois, o próprio WEKA converte esse tipo de arquivo para o tipo de arquivo que ele trabalha, o arff.}
 
 \par
-\textcolor{red}{Também foi necessário se fazer algumas alterações nas informações de dentro da tabela para que depois da conversão não viesse a ocorrer algum erro nos dados. Alterações essas como a remoção de acentos identificados nas informações da tabela, pois, os arquivos no WEKA se encontram no formato ASCII que não suportam caracteres acentuados, outra alteração foi a de transformar números para textos, pois, o tipo de dado em cada coluna só pode ser \textit{numeric nominal}, \textit{string} ou \textit{date}, e por fim, a última alteração foi a da remoção de virgulas encontradas nos dados, pois, para converter um arquivo csv no formato arff, o WEKA identifica as virgulas como as colunas que separam os dados.}
+\textcolor{red}{Também foi necessário se fazer algumas alterações nas informações de dentro da tabela para que depois da conversão não viesse a ocorrer algum erro nos dados. Alterações essas como a remoção de acentos identificados nas informações da tabela, pois, os arquivos no WEKA segundo \citeonline{Amaral2016}, se encontram no formato ASCII que não suportam caracteres acentuados, outra alteração foi a de transformar números para textos, pois, o tipo de dado em cada coluna só pode ser \textit{numeric nominal}, \textit{string} ou \textit{date}, e por fim, a última alteração foi a da remoção de virgulas encontradas nos dados, pois, para converter um arquivo csv no formato arff, o WEKA identifica as virgulas como as colunas que separam os dados.}
 
 \par
 \textcolor{red}{A última alteração que precisou ser feita foi da transformação dos ponto e vírgula para somente virgula, pois, o Excel ao transformar um arquivo em xlsx para csv, ele faz com a separação da coluna seja feita por ponto e vírgula o que acaba ocasionando erros e inconsistência nos dados quando o arquivo é convertido do csv para o arff, pois, o WEKA considera o caractere virgula como a representação das colunas que separam os dados. Após ter feito todos esses processos que foram mencionados anteriormente, a conversão do arquivo foi um sucesso, não tendo sido encontrado nenhum problema e inconsistência nos dados que possam ocasionar erro durante o processo de mineração.}
@@ -42,4 +42,26 @@
 \subsection{Arquivo ARFF}
 
 \par
-\textcolor{}{}
+\textcolor{red}{Após todo o processo de conversão, internamente, o arquivo arff possui duas seções principais: um cabeçalho e uma área de dados. Segundo \citeonline{Amaral2016}, um cabeçalho deve possuir o nome do conjunto de dados através do atributo relação, no caso, o nome do conjunto deve ser acompanhado pela marca @relation seguido com os atributos que compõem a relação com a marca @attribute. Como podemos ver representado na Figura 21 o arquivo utilizado para a mineração de dados, onde a marca @relation traz o nome do conjunto: Vestibulando de 2017. Se tem no total 34 atributos marcados por @relation, sendo todos os atributos do tipo categórico.} 
+
+\par
+\begin{figure}[!htp]
+	\begin{center}
+    \caption{\label{fig:waveform_fig} Cabeçalho do arquivo arff.}
+	\includegraphics[scale=0.57]{Figuras/arquivo_arff.png}
+	\end{center}
+    \legend{Fonte: Próprio autor.}
+\end{figure}
+
+\par
+\textcolor{red}{A seção de área de dados tem o seu início definido pela marca @data, onde os dados dessa área são posicionados em linhas, separados por vírgulas, na mesma ordem em que foram colocados os atributos que teve como um total de 8.571 linhas (que é a quantidade de inscritos que responderam o questionário ), como representado na Figura 22.}
+
+\par
+\begin{figure}[!htp]
+	\begin{center}
+    \caption{\label{fig:waveform_fig} Área de Dados do arquivo arff.}
+	\includegraphics[scale=0.60]{Figuras/arquivo_arff_2.png}
+	\end{center}
+    \legend{Fonte: Próprio autor.}
+\end{figure}
+
