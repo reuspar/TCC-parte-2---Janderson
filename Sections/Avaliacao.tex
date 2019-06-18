@@ -58,6 +58,59 @@
 \par
 \textcolor{red}{Podemos notar que a taxa de acurácia do modelo utilizado, deu como resultado aproximadamente 53\% de instancias classificadas corretamente, um valor um pouco abaixo do que esperado, que era de 70\% de precisão para ser um bom modelo. Como foi explicado durante a preparação do modelo, que foi necessário utilizar técnicas para balancear os dados com o intuito de resolver o problema de classe rara, teve como consequência, uma queda drástica da quantidade de registros, onde, de 8.571 registros caiu para 1.574 registros balanceados. Por causa desse balanceamento, foi um dos fatores que motivaram para que o modelo não possuísse registros suficiente a fim de obter uma taxa razoável  de instâncias classificadas corretamente.}
 
+
+
 \section{Avaliando com o algoritmo Apriori}
 
 
+\textcolor{red}{Para a mesma base de dados, foi realizado outra análise utilizando o algoritmo de associação Apriori, tendo como as parametrizações de suporte e confiança mínimos na geração das regras que sejam mais relevantes, para os resultados esperados associada a variável Aprovado. Para o suporte e confiança mínima para avaliação, foi utilizado como base a porcentagem usada no trabalho de \citeonline{LeandroSilva2014}, que foi feito testes com 50\%, 30\%, 25\% e 15\% de suporte geração dos items set e 70\% de confiança na geração de regras para todos os casos de suporte avaliados.}
+
+\par
+\textcolor{red}{Para os testes, foi utilizado toda a base de dados com um total de 8571 registros. Na janela de configuração do algoritmo Apriori apresentado na Figura XX, foi definido para a quantidade máxima de regras geradas foi colocado na opção \textit{numRules} o número 100 para todos os teste, logo acima, no parâmetro \textit{metricType} a métrica utilizada nos testes foi a de confiança tendo a sua taxa como 70\% para as regras geradas, e para os limites inferiores (\textit{lowerBoundMinSupport}) e superiores (\textit{upperBoundMinSupport}) mínimo de suporte é a opção que é definido a taxa de porcentagem mínima do suporte.}
+
+
+\par
+\begin{figure}[!htp]
+	\begin{center}
+    \caption{\label{fig:waveform_fig} Janela de configuração do algoritmo Apriori.}
+	\includegraphics[scale=0.70]{Figuras/Janela_configuracao_apriori.png}
+	\end{center}
+    \legend{Fonte: Próprio autor.}
+\end{figure}
+
+
+\par
+\textcolor{red}{Nos primeiros testes foi observado que independentemente da taxa de suporte, todas regras geradas para aprovados, tem uma forte tendência a ter a classe Nao como resultado, segundo \citeonline{Amaral2016}, isso acontece pelo fato de existe uma maior quantidade de um registro do que outro, fazendo com que o algoritmo tende a gerar regras somente para a maior quantidade fornecida, isto é, pegando como exemplo a base de dados utilizada que possui  91\% dos registros de candidatos que não foram aprovados e 9\% de candidatos que foram aprovados, o algoritmo só vai gerar regras para os candidatos que não foram aprovados. No trabalho de \citeonline{LeandroSilva2014} não ocorreu esse mesmo problema, pelo fato de o modelo dele possuir 4 classes com registros bem divididos para sua variável Nota.}
+
+
+\par
+\textcolor{red}{No intuito de resolver esse tipo de problema, para que ele possa gerar as melhores regras para ambas as classes, foi feita a separação da base em 2 partes, uma base com os candidatos que foram aprovados com um total de 787 registros e outra base com os candidatos que não foram aprovados com um total de 7784 registros. Após todo esse processo, foi feito os testes paras as duas bases, tendo com sucesso regras geradas para ambas as partes. A Figura XX apresenta uma tabela com as parametrizações de suporte e confiança utilizadas para o algoritmo Apriori, junto com as regras geradas paras as quatros porcentagens de suporte testadas, regras essas associada a variável Aprovado.}
+
+
+\par
+\begin{figure}[!htp]
+	\begin{center}
+    \caption{\label{fig:waveform_fig} Tabela de parametros dos testes.}
+	\includegraphics[scale=0.90]{Figuras/Tabela_de_parametros_apriori.png}
+	\end{center}
+    \legend{Fonte: Próprio autor.}
+\end{figure}
+
+\par
+\textcolor{red}{Podemos notar que nas colunas de 4 atributos e 9 atributos da classe Não, para todos as porcentagens de suportes mínimos testado, nenhuma regra foi gerada, diferente da coluna de não aprovados com 22 atributos, que de três dos quatros suportes mínimos testados geraram pelo menos uma regra. Na coluna de 22 atributos para a classe Sim de aprovados, podemos obsservar que ela obteve as maiores quantidades de regras geradas para todas as taxas de suporte mínimo especificadas e que para as demais colunas da classe sim para os outros atributos, pelo menos uma regra foi gerada.}
+
+\par
+\textcolor{red}{Durantes os testes foi analisando também, que tanto para os candidatos aprovados quanto para os não aprovados, possuíam a mesma quantidade de ciclo de performance (vezes que o algoritmo foi executado) para obter as regras geradas, sendo que para o suporte de 50\% ele executou 10 vezes, 30\% executou 14 vezes, 25\% executou 15 vezes e para 15\% ele executou 17vezes. Também foi observado que durante a avaliação dos dados, para cada teste do suporte, a quantidade de itens set gerados variavam de 1 produto até no máximo 11 produtos gerados, como apresentado no exemplo da Figura XX.}
+
+
+\par
+\begin{figure}[!htp]
+	\begin{center}
+    \caption{\label{fig:waveform_fig} Exemplo dos dados com 22 atributos com suporte mínimo 15\% e confiança mínima 70\%.}
+	\includegraphics[scale=0.90]{Figuras/Resultados_valores_apriori.png}
+	\end{center}
+    \legend{Fonte: Próprio autor.}
+\end{figure}
+
+\par
+\textcolor{red}{}
