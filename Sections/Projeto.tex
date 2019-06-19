@@ -1,12 +1,22 @@
 \label{chapter:projeto}
 
 \par
-\textcolor{red}{Os dado...}
+\textcolor{red}{Nesta sessão será apresentado o processo de modelagem da base de dados que vai ser utilizada para esse projeto, no caso, o pré-processamento dessa base. Será demonstrado o passo a passo da seleção dos dados que são relevantes foram feitos para esta pesquisa, a transformação da base de dados para o formato apropriado para que os algoritmos do software WEKA utilizados, possam usa-las sem que seus resultados obtidos apresentem algum tipo de incoerência.}
+
+\par
+\textcolor{red}{Foi mandando um requerimento para a Comissão Permanente de Vestibular (CPV), para que fosse fornecido a base de dados do cadastro e do questionário feitos pelos candidatos que fizeram a prova do vestibular de 2017 para ingressar na universidade no anos de 2018, contudo, a requisição foi negada, pelo fato de que eles não queria expor dados pessoais dos candidatos. Para entrar em om consenso, contornando essa situação, foi fornecido somente os dados do questionário, com a condição de que os Ids dos candidatos fossem trocados por Ids aleatórios, para que as questões não tivessem nenhuma ligação associado aos candidatos.}
+
+\par
+\textcolor{red}{No fim, foi obtido através da CPV, somente a base de dados do questionário, contendo uma quantidade de 8.571 registros dos candidatos que o fizeram, durante a inscrição do vestibular da Universidade Federal de Roraima. Com a base de dados obtida, estava pronta para ser feito o pré-processamento dela.}
 
 \section{Pré-processamento}
 
 \par
 \textcolor{red}{Com os dados mencionados anteriormente, foram fornecidos no formato de arquivo .xlsx do Excel com uma tabela contendo três colunas de informações com o ID do candidato, a resposta do questionario e o número do questionario atribuido a resposta, como demonstrado na Figura 19. De 37 questões, somente 33 poderam ser fornecidas, pois, quatro delas tinham como respostas dissertativas (que são armazenadas com as outras também, mas como não possuiam um padrão por serem campos abertos, consequentemente, entrava bastante "lixo") e apenas as 33 tinham como resposta opções já fornecidas pelo próprio sitema que eram armazenadas no banco de dados e que davam de ser disponibilizado.}
+
+\par
+\textcolor{red}{Para poder começar com a utilização desses dados, foi necessário transformar toda a tabela para um formato apropriado a fim de que os aplicativos do software WEKA os suporte. De início foi feito colunas para cada número do questionário através das funções de filtro e concatenação fornecida pelo Excel, e as linhas abaixo delas seriam as respostas de cada candidato para aquela coluna especifica, como demonstrado na Figura 20. A coluna de ID foi removida já que não era necessário para a mineração, entretanto, ela foi necessária na geração de uma coluna nova rotulada de Aprovado que foi obtida através de duas tabelas contendo informações dos candidatos geral e dos candidatos aprovados.}
+
 
 \par
 \begin{figure}[!htp]
@@ -16,9 +26,6 @@
 	\end{center}
     \legend{Fonte: Próprio autor.}
 \end{figure}
-
-\par
-\textcolor{red}{Para poder começar com a utilização desses dados, foi necessário transformar toda a tabela para um formato apropriado a fim de que os aplicativos do software WEKA os suporte. De início foi feito colunas para cada número do questionário através das funções de filtro e concatenação fornecida pelo Excel, e as linhas abaixo delas seriam as respostas de cada candidato para aquela coluna especifica, como demonstrado na Figura 20. A coluna de ID foi removida já que não era necessário para a mineração, entretanto, ela foi necessária na geração de uma coluna nova rotulada de Aprovado que foi obtida através de duas tabelas contendo informações dos candidatos geral e dos candidatos aprovados.}
 
 \par
 \begin{figure}[!htp]
@@ -95,6 +102,12 @@
     \legend{Fonte: Próprio autor.}
 \end{figure}
 
+\par
+\textcolor{red}{}
+
+\par
+\textcolor{red}{}
+
 
 
 \par
@@ -129,7 +142,7 @@
 \subsection{Problemas de classe rara}
 
 \par
-\textcolor{red}{É normal em alguns casos de quando se vai minerar algum dado ocorra o problema de classe rara, que segundo \citeonline{Amaral2016}, explica que quando uma instancia de uma classe é predominante do que outra instancia de outra classe, a consequência é de que o modelo aprenderá somente as características da classe dominante, enquanto ele falhará em classificar novas instancias da outra classe, pelo motivo de ela ser uma classe rara. É o que acontece nos dados desse trabalho, especificamente no atributo de Aprovado que tem no total de 8571 instancias, possuindo a classe Sim com 7784 instancias (81\%) e a Classe Nao com 787 instancias (9\%) como demonstrado na Figura 24.}
+\textcolor{red}{É normal em alguns casos de quando se vai minerar algum dado ocorra o problema de classe rara, que segundo \citeonline{Amaral2016}, explica que quando uma instancia de uma classe é predominante do que outra instancia de outra classe, a consequência é de que o modelo aprenderá somente as características da classe dominante, enquanto ele falhará em classificar novas instancias da outra classe, pelo motivo de ela ser uma classe rara. É o que acontece nos dados desse trabalho, especificamente no atributo de Aprovado que tem no total de 8571 instancias, possuindo a classe Sim com 7784 instancias (81\%) e a Classe Nao com 787 instancias (9\%) como demonstrado na Figura 27.}
 
 \par
 \begin{figure}[!htp]
@@ -144,13 +157,13 @@
 \textcolor{red}{Segundo \citeonline{Amaral2016}, a solução mais comum para esse tipo de problema é de utilizar as técnicas de estratificação. No software WEKA, para métodos supervisionado, possui 4 técnicas de estratificação para instancias, no caso, a que foi utilizada para resolver esse tipo de problema foi a técnica SpreadSubsample, pois, segundo o site do software \citeonline{WEKA} esse tipo de filtro gera uma subamostra aleatória de um conjunto de dados, permitindo especificar o \textit{spread} máximo entre a classe mais rara e a classe mais comum, ou seja, balanceado o conjunto de dados dessas duas classe.}
 
 \par
-\textcolor{red}{No filtro SpreadSubsample a opção escolhida para a distributionSpread (\textit{spread} máximo distribuição de classe) foi de 1 que representa a opção de distribuição uniforme que é demonstrada na Figura 25. Depois de ser aplicado esse filtro na classe de Aprovado, tem como resultado um conjunto de dados balanceado tanto para a classe mais comum (Sim) como a classe mais rara (Nao), como representada na Figura 26.}
+\textcolor{red}{No filtro SpreadSubsample a opção escolhida para a distributionSpread (\textit{spread} máximo distribuição de classe) foi de 1 que representa a opção de distribuição uniforme que é demonstrada na Figura 28. Depois de ser aplicado esse filtro na classe de Aprovado, tem como resultado um conjunto de dados balanceado tanto para a classe mais comum (Sim) como a classe mais rara (Nao), como representada na Figura 29.}
 
 \par
 \begin{figure}[!htp]
 	\begin{center}
     \caption{\label{fig:waveform_fig} Representação da configuração  do filtro SpreadSubsample.}
-	\includegraphics[scale=0.99]{Figuras/SpreadSubsample.png}
+	\includegraphics[scale=0.80]{Figuras/SpreadSubsample.png}
 	\end{center}
     \legend{Fonte: Próprio autor.}
 \end{figure}
@@ -159,7 +172,7 @@
 \begin{figure}[!htp]
 	\begin{center}
     \caption{\label{fig:waveform_fig} Resultado do balanceamento do atributo Aprovado.}
-	\includegraphics[scale=0.90]{Figuras/Atributo_aprovado_balanceado.png}
+	\includegraphics[scale=0.80]{Figuras/Atributo_aprovado_balanceado.png}
 	\end{center}
     \legend{Fonte: Próprio autor.}
 \end{figure}
