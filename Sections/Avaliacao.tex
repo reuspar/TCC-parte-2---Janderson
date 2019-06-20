@@ -6,7 +6,7 @@
 \par
 \textcolor{red}{Para a avaliação do experimento, no processo de mineração, foi utilizado um notebook pessoal da marca DELL do modelo Inspiron 5558, que possui um processador Intel(R) Core(TM) i5-5200U CPU @ 2.20 GHz com uma mémoria instalada de 16 GB. Para o uso dos algoritmos de classificação e associação para mineração e avaliação, foi utilizado a versão estável 3.8.3 do software WEKA.}
 
-\section{Avaliando com o algoritmo J48}
+\section{Avaliando Com o Algoritmo J48}
 
 \par
 \textcolor{red}{De forma para validar o modelo feito pela atividade de classificação, foi utilizada um filtro do Explore do WEKA chamado de \textit{RemovePercentage} para poder fazer a separação da base de dados para treinamento e teste. Possuindo 1.574 registros, a base de dados foi separada em duas partes, tendo como 70\% dos dados para treinamento com 1086 instancias e 30\% dos dados para teste com 486 instancias. Após o processo de utilizar o modelo de classificação do conjunto de treinamento para testar no conjunto de teste, o algoritmo J48 obteve como resultado uma precisão de 57\% das instâncias classificadas corretamente e de aproximadamente 43\% das instancias classificada incorretamente, como demonstrado na Figura 31.}
@@ -60,7 +60,7 @@
 
 
 
-\section{Avaliando com o algoritmo Apriori}
+\section{Avaliando Com o Algoritmo Apriori}
 
 
 \textcolor{red}{Para a mesma base de dados, foi realizado outra análise utilizando o algoritmo de associação Apriori, tendo como as parametrizações de suporte e confiança mínimos na geração das regras que sejam mais relevantes, para os resultados esperados associada a variável Aprovado. Para o suporte e confiança mínima para avaliação, foi utilizado como base a porcentagem usada no trabalho de \citeonline{LeandroSilva2014}, que foi feito testes com 50\%, 30\%, 25\% e 15\% de suporte geração dos items set e 70\% de confiança na geração de regras para todos os casos de suporte avaliados.}
