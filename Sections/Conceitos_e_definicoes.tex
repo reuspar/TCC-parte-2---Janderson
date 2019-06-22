@@ -514,12 +514,43 @@ conjunto S caso utilize o atributo A para fazer a próxima partição.}
 	\end{center}
 \end{table}
 
+\section{Validação do Modelo}
+
+\par
+\textcolor{red}{Na implementação ou utilização de um algoritmo, é essencial verificar a sua precisão (acurácia) em um conjunto de teste. Por exemplo, em classificação, no caso da árvore de decisão que são propenso ao problema denominado como \textit{overfitting}, onde, a árvore gerada não consegue generalizar corretamente novas instâncias de testes, possuindo uma capacidade de predição muito abaixo da precisão desejada ao se utilizar o conjunto de teste de dados de treinamento \cite{Carvalho2014}. Para evitar este tipo de problema, avaliando a estimativa de erro obtida pela árvore, pode se utilizar algumas técnicas como: \textit{cross-validation} e matriz de confusão.}
+
+
+
+\subsection{Cross-Validation}
+
+\par
+\textcolor{red}{A validação cruzada é uma técnica que avalia a eficiência de generalização de um modelo a partir de um conjunto de dados, ou seja, ela analisa se o conjunto de dados de treinamento é representado o bastante em relação à base de dados na qual se deseja predizer certas instâncias \cite{Carvalho2014, Monard2003}.}
+
+\par
+\textcolor{red}{O método mais comum de ser utilizado é o K-partições, onde, por exemplo utilizando k = 10 \textit{folds}, ele pega uma base inteira e a divide em 10 partições com a mesma quantidade de instâncias (aqueles que não são divisível pelo valor definido, o restante que sobra são distribuídas pelas partições), sendo que em 10 interações, para cada partição será o conjunto de teste enquanto as 9 restantes serão utilizadas como conjunto de caso de treinamento \cite{Carvalho2014}.}
+
+\par
+\textcolor{red}{A cada interação realizada, é calculada a estimativa de erro do modelo (que é a quantidade de vezes em que foi classificado incorretamente no conjunto de casos de teste), onde, será somada cada estimativa de erro obtida em cada interação e dividida por 10, para obter a estimativa total do erro do modelo \cite{Carvalho2014}.}
 
 \subsection{Matriz de Confusão}
 
 \par
-\textcolor{red}{}
+\textcolor{red}{Diferentemente da validação cruzada que só avalia a quantidade de instâncias que foram classificadas incorretamente, a matriz de confusão fornece uma estimativa mais detalhada, em comparação à classificação incorreta das classes \cite{Carvalho2014}. Segundo \citeonline{Monard2003}, a matriz mostra a quantidade de classificação correta versus as classificações preditas para cada uma das classes, sobre um conjunto de exemplo. Para entender o funcionamento dessa técnica, usaremos o exemplo da  tabela utilizada por \citeonline{Carvalho2014}, como demonstrado na Figura 13:}
 
+\par
+\begin{figure}[!htp]
+	\begin{center}
+    \caption{\label{fig:waveform_fig} Exemplo de uma matriz de confusão para um conjunto de classificação contendo duas classes-alvo.}
+	\includegraphics[scale=0.80]{Figuras/Exemplo_matriz_de_confusao.png}
+	\end{center}
+    \legend{Fonte:\cite{Carvalho2014}}
+\end{figure}
+
+\par
+\textcolor{red}{Segundo \citeonline{Carvalho2014}, a  matriz de confusão funciona da seguinte forma, a tabela acima possui um tamanho 2x2 contendo 2 classes-alvo, onde, ela pode ter 4 valores possíveis que é: a quantidade de instâncias classificadas corretamente para a classe X (Verdadeiros Positivo), a quantidade de instancias da classe X que foram classificadas incorretamente na classe Y (Falso Positivo), a quantidade de instancias da classe Y que foram classificadas corretamente (Verdadeiro Negativo) e a quantidade de instancias da classe Y que foram classificadas incorretamente na classe X (Falso Negativo).}
+
+\par
+\textcolor{red}{Podemos notar que a matriz de confusão é uma ótima ferramenta para verificar a acurácia do algoritmo, fornecendo maiores informações da estimativa de erro obtida pela validação cruzada.}
 
 %==========================
 % MINERAÇÃO DE DADOS EDUCACIONAIS
