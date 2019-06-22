@@ -347,12 +347,12 @@ Segundo \citeonline{Romao1999}, o algoritmo apriori possui três processos que �
 % PARAMETROS
 %==========================
 
-\section{Pametros Utilizados Para Classificação e Associação}
+\section{Parâmetros Utilizados Para Classificação e Associação}
 
-\subsection{Associação: Suporte, Confiança e Lift}
+\subsection{Suporte, Confiança e Lift}
 
 \par
-\textcolor{red}{Na associação, o problema para se encontrar as regras para ela pode ser dividido em duas partes. A primeira é a de descobrir todos os \textit{itemset} (conjunto de itens) que possuam um suporte com transações igual ou superior ao limite mínimo que foi especificado, onde os itens encontrados são conhecidos como o conjunto de itens frequentes, e a segunda parte é a de gerar as regras de associação a partir dos \textit{itemset} frequentes encontrados, no qual, serão selecionado apenas as regras que possuam um grau de confiança mínima especificado pelo usuário \cite{Vasconcelos2004, LeandroSilva2014}.}
+\textcolor{red}{Na associação, o método para se encontrar as regras para ela pode ser dividido em duas partes. A primeira é a de descobrir todos os \textit{itemset} (conjunto de itens) que possuam um suporte com transações igual ou superior ao limite mínimo que foi especificado, onde os itens encontrados são conhecidos como o conjunto de itens frequentes, e a segunda parte é a de gerar as regras de associação a partir dos \textit{itemset} frequentes encontrados, no qual, serão selecionado apenas as regras que possuam um grau de confiança mínima especificado pelo usuário \cite{Vasconcelos2004, LeandroSilva2014}.}
 
 \textcolor{red}{Praticamente, dado um conjunto de transações, o objetivo em minerar por regras de associação é a de encontrar todas as regras que possuam o suporte e a confiança iguais ou superiores ao valores minimo especificado pelo úsuario \cite{Vasconcelos2004}. O suporte de uma regra X $\rightarrow$ Y, onde X e Y são  \textit{itemset}, é dada pela seguinte fórmula apresentada na \autoref{eq:Suporte}:}
 
@@ -403,18 +403,123 @@ Segundo \citeonline{Romao1999}, o algoritmo apriori possui três processos que �
 \par
 \textcolor{red}{O numerador representa o valor de confiança da regra que foi obtida X $\rightarrow$ Y e o denominador representa o valor de suporte obtido de Y. No caso, o lift pode ser tratado como o qual mais frequente se torna Y quando X $\rightarrow$ Y ocorre \cite{Gonsalves2004}. Para esclarecer melhor, ainda com o exemplo dosupermercado, determinamos um lift maior ou igual a 2, pegando pelo menos 3 regras que passaram de 80\% de confiança: Café $\rightarrow$ Pão com 100\%, Café $\rightarrow$ Manteiga com 100\% e Pão $\rightarrow$ Manteiga com 80\%. E pegando tambem os suporte de pão e manteiga com 50\%. Logo, temos o seguinte:}
 
-\begin{itemize}
+\textit{Lift (Café $\rightarrow$ Pão)} = \textit{Confiança (Café $\rightarrow$ Pão)} /  \textit{Suporte (Pão)} = 1 / 0,5 = 2
+    
+\textit{Lift (Café $\rightarrow$ Manteiga)} = \textit{Confiança (Café $\rightarrow$ Manteiga)} /  \textit{Suporte (Manteiga)} = 1 / 0,5 
 
-    \item \textit{Lift (Café $\rightarrow$ Pão)} = \textit{Confiança (Café $\rightarrow$ Pão)} /  \textit{Suporte (Pão)} = 1 / 0,5 = 2.
+= 2
     
-    \item \textit{Lift (Café $\rightarrow$ Manteiga)} = \textit{Confiança (Café $\rightarrow$ Manteiga)} /  \textit{Suporte (Manteiga)} = 1 / 0,5 = 2.
-    
-    \item \textit{Lift (Pão $\rightarrow$ Manteiga)} = \textit{Confiança (Pão $\rightarrow$ Manteiga)} /  \textit{Suporte (Manteiga)} = 0,8 / 0,5 = 1,6.
-    
-\end{itemize}
+\textit{Lift (Pão $\rightarrow$ Manteiga)} = \textit{Confiança (Pão $\rightarrow$ Manteiga)} /  \textit{Suporte (Manteiga)} = 0,8 / 0,5 
+
+= 1,6
+
 
 \par
 \textcolor{red}{}
+
+
+\subsection{Entropia e Ganho de Informação}
+
+\par
+\textcolor{red}{Na classificação, o processo da escolha dos atributos mais relevantes para a construção de uma árvore de decisão é feito por dois métodos de seleção: Entropia da informação e Ganho de informação.}
+
+\par
+\textcolor{red}{A Entropia da Informação é a medida utilizada para indicar a homogeneidade dos exemplos contidos em um conjunto de dados, ou seja, ela calcula a impureza em um determinado subconjunto \cite{Carvalho2014}. Através dessa métrica, é possível diminuir a quantidade de informação necessária para classificar um determinado registro, garantindo assim, que uma árvore simplificada seja obtida. A formula da entropia é demonstrado na \autoref{eq:Entropia}:}
+
+\begin{equation}
+    \label{eq:Entropia}
+        {\textit{Entropy(S)}={\sum_{i=1}^{C} -(p_i)\log_{2}(p_i)}}
+\end{equation}
+
+\textcolor{red}{Dado um conjunto de entrada (S) que pode ter \textit{C} classes distintas (número de classes), onde $p_i$ é a proporção de dados em S que pertencem á classe i. O logaritmo de base 2 é utilizado pelo fato que a medida da entropia é em \textit{bits}.}
+
+\par
+\textcolor{red}{Já o Ganho de Informação é a medida utilizada para determinar o quanto um dado atributo irá particionar (dividir) os exemplos de aprendizado de acordo com sua função objetivo (classes), ou seja, é o ganho de informação obtido ao dividir o conjunto de dados com base no atributo calculado, determinado pela diferença entre a entropia original e a entropia calculada após a divisão (particionamento) do conjunto \cite{Carvalho2014, Steiner2004}. A formula do Ganho de informação é representada na \autoref{eq:Ganho}:}
+
+\begin{equation}
+    \label{eq:Ganho}
+        {\textit{Gain(S,A)}={\textit{Entropy(S)} -  \sum_{v \in Values(A)} \frac{|S_v|}{|S|} Entropy(S_v) } }
+\end{equation}
+
+\par
+\textcolor{red}{A \textit{Entropy(S)} representa a entropia original (classes da variável dependente), no caso, a entropia das classes da variavel dependente (Aprovado:Sim ou Não), \textit{Values(A)} representa os conjunto dos valores que A pode assumir, \textit{v} um elemento deste conjunto e $S_v$ o subconjunto de S formado pelos dados em que A=v. Sendo que \textit{Entropy(S)} é uma medida de homogeneidade  dos exemplos contidos em um conjunto de dados (S), \textit{Values(A)} é uma medida de homogeneidade estimada para o
+conjunto S caso utilize o atributo A para fazer a próxima partição.}
+
+\par
+\textcolor{red}{A construção de uma árvore de decisão tem três objetivos, quais sejam: diminuir a entropia (a aleatoriedade da variável objetivo), ser consistente com o conjunto de dados e possuir o menor número de nós \cite{Steiner2004}. Para melhor entendimento dos cálculos acima, será utilizado o exemplo do jogar tênis para ilustrar. Como demonstrado na Tabela XX, os conjuntos de atributos tempo, temperatura, umidade e vento que auxiliam na decisão de jogar tênis (sim ou não).}
+
+\par
+\textcolor{red}{}
+
+\par
+\textcolor{red}{}
+
+\par
+\begin{table}[!htp]
+	\begin{center}
+    \caption{\label{fig:waveform_fig} Base de treinamento do jogo tênis.}
+	\includegraphics[scale=0.60]{Figuras/Jogar_tenis.png}
+	\end{center}
+\end{table}
+
+\par
+\textcolor{red}{Primeiramente calculamos a entropia original para a variável dependente Joga, em relação as suas duas classes ao total de registros da variável a que elas pertencem, no caso, a classe Sim possui 5 registros e classe Não possui 9 registros dentre os 14 registros no total, como demonstrado o cálculo abaixo:}
+
+\textit{Entropy(Joga)}={ - ($\frac{5}{14}$)$\log_{2}$($\frac{5}{14}$) - ($\frac{9}{14}$)$\log_{2}$($\frac{9}{14}$) = 0,16 + 0,12 = 0,28.}
+
+\par
+\textcolor{red}{Em seguida, calculamos a entropia das classes pertencente a variável Joga em relação a quantidade de vezes que cada uma das classes do atributo Tempo aparecem. No caso, o valor Sol possui 5 registros contendo 2 registros com a classe Sim e 3 registros com a classe Não, o valor Nublado possui 4 registros contendo os 4 registros somente para a classe Sim e o valor Chuva possui 5 registros contendo 3 registros para a classe Sim e 2 registros para a classe Não. Como demonstrado o cálculo abaixo:}
+
+\textit{Entropy(Joga,Sol)}={ - ($\frac{2}{5}$)$\log_{2}(\frac{2}{5})$ - ($\frac{3}{5}$)$\log_{2}(\frac{3}{5})$ = 0,16 + 0,13 = 0,29}
+
+\textit{Entropy(Joga,Nublado)}={ - ($\frac{4}{4}$)$\log_{2}(\frac{4}{4})$ = 0}
+
+\textit{Entropy(Joga,Chuva)}={ - ($\frac{3}{5}$)$\log_{2}$($\frac{3}{5}$) - ($\frac{2}{5}$)$\log_{2}$($\frac{2}{5}$) = 0,13 + 0,16 = 0,29} 
+
+\par
+\textcolor{red}{Depois de fazer o cálculo da entropia para cada valor da variável Tempo, aplicamos os resultados deles ao cálculo de ganho de informação, onde o valor da entropia original é subtraído pela soma da quantidade de vezes em que o valor do registro apareceu dividido pelo total de registros da sua variável pertencente sendo multiplicado pela sua respectiva entropia. No caso, a variável tempo possui 14 registro no total, contendo 5 registros para o valor Sol possuindo o valor de entropia de 0,29 em relação as classes da variável Joga, 4 registros para o valor Nublado com o valor de entropia de 0 e 5 registros para o valor Chuva com o valor de entropia de 0,29, como demonstrado logo abaixo:}
+
+\textit{Gain(Joga,Tempo)}={ 0,28 - ($\frac{5}{14}$).0,29 - ($\frac{5}{14}$).0 - ($\frac{5}{14}$).0,29 = 0,28 - 0,1 - 0 - 0,1 = 0,08} 
+\par
+\textcolor{red}{Para facilitar o entendimento do que foi feito, a Figura 12 apresenta o passo a passo do que foi feito:}
+
+\begin{figure}[!htp]
+	\begin{center}
+    \caption{\label{fig:waveform_fig} Demonstração do cálculo da Entropia e do Ganho de informação.}
+	\includegraphics[scale=0.80]{Figuras/Calculo_ganho_de_informacao.png}
+	\end{center}
+    \legend{Fonte:Próprio autor.}
+\end{figure}
+
+\par
+\textcolor{red}{Fazendo o mesmo cálculo para os outros atributos a taxa de ganho obtido foi: 0,02 para temperatura, 0,01 para umidade e 0,02 para vento. Analisando com o resultado que já foi obtido do ganho de informação do atributo Tempo (0,08), percebemos que o atributo Tempo possui a taxa de ganho mais alta, logo, se for utilizado somente o atributo Tempo, terá uma alta probabilidade de se obter uma classificação mais interessante para a árvore. Logo, o atributo Tempo vai estar na raiz da árvore de decisão.}
+
+\par
+\textcolor{red}{A partir da raiz da variável Tempo, dependendo do ramo que for percorrido o cálculo de entropia e ganho de informação é aplicado para aquele caminho e sucessivamente para todos os ramos até gerar a arvore toda. Ou seja, o valor (ramo) Sol possui 5 atributos, o cálculo do ganho de informação dos outros atributos em relação a variável dependente Joga, vai estar sendo limitado por 5 registros apenas, como demonstrado na Tabela 2:}
+
+\par
+\textcolor{red}{}
+
+\par
+\textcolor{red}{}
+
+\par
+\textcolor{red}{}
+
+\par
+\begin{table}[!htp]
+	\begin{center}
+    \caption{\label{fig:waveform_fig} Registros do valor Sol.}
+	\includegraphics[scale=0.90]{Figuras/Ramo_sol.png}
+	\end{center}
+\end{table}
+
+
+\subsection{Matriz de Confusão}
+
+\par
+\textcolor{red}{}
+
 
 %==========================
 % MINERAÇÃO DE DADOS EDUCACIONAIS
