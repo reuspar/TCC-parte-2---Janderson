@@ -86,13 +86,13 @@ Segundo \citeonline{Santos2015}, na predição a análise é feita na forma de e
 Uma tarefa de descrição, consiste em determinar quais itens vão ser adquiridos diretamente em uma mesma transação, isto é, quanto um conjunto de atributos favorece para a presença de outro conjunto \cite{Garcia2013}. No caso se X existir alguma transação, há a possibilidade de Y existir também, pode ser apresentado na forma: SE \textit{atributo} X ENTÃO \textit{atributo} Y \cite{Camilo2009}. 
 
 \par
-Segundo \citeonline{Camilo2009}, a associação é uma das tarefas mais conhecidas pelo fato de terem tido ótimos resultados, principalmente na área de marketing com a análise de \textbf{Cesta de Vendas}, onde é identificados quais produtos são levados juntos pelo cliente. Pode-se perceber que são muito utilizado em estudos que tentam descobrir a relação entre os itens, para assim, criarem pacotes de venda ao consumidor \cite{Garcia2013}. 
+Segundo \citeonline{Camilo2009}, a associação é uma das tarefas mais conhecidas pelo fato de terem tido ótimos resultados, principalmente na área de marketing com a análise de \textbf{Cesta de Vendas}, onde são identificados quais produtos são levados juntos pelo cliente. Pode-se perceber que tais estudos são utilizado para descobrir a relação entre os itens, para assim, criarem pacotes de venda ao consumidor \cite{Garcia2013}. 
 
 
 \subsubsection{Classificação}
 
 \par
-Uma tarefa de predição, ela consiste em examinar uma certa característica nos dados (\textit{X}) e atribuir uma classe previamente definida (\textit{Y}), ou seja, visa identificar qual classe um determinado registro pertença, como podemos ver representada na Figura 3 \cite{Garcia2013, Kampff2013}. Exemplos disso é classificar se uma pessoa é de renda baixa, média ou alta, ou classificar se um cliente de um banco é bom ou mau pagador, assim determinando se deve conceder ou não créditos ao mesmo.
+Uma tarefa de predição, consiste em examinar uma certa característica nos dados (\textit{X}) e atribuir uma classe previamente definida (\textit{Y}), ou seja, visa identificar qual classe um determinado registro pertença, como podemos ver representada na Figura 3 \cite{Garcia2013, Kampff2013}. Exemplos disso é classificar se uma pessoa é de renda baixa, média ou alta, ou classificar se um cliente de um banco é bom ou mau pagador, assim determinando se deve conceder ou não créditos ao mesmo.
 
 \begin{figure}[!htp]
 	\begin{center}
@@ -109,7 +109,7 @@ Uma tarefa de predição, ela consiste em examinar uma certa característica nos
 Outra tarefa de predição, muito semelhante a anterior, só que com a diferença de que o atributo especial é identificado com um valor numérico e não categórico. Resume-se na estimativa do valor futuro de algum índice se baseando em dados do comportamento passado desse índice \cite{Camilo2009, LeandroSilva2014}. Exemplo, determinar se o índice da BOVESPA subirá ou descerá amanhã, prever o valor de vida de um equipamento, prever o desempenho do aluno, estimar a quantia a ser gasta por uma família de quatro pessoas durante a volta às aulas e entre outros.
 
 \par
-A técnica de regressão pode ser classificada em linear e não-linear. Segundo \citeonline{Camilo2009}, são chamados de linear quando tanto as variáveis preditivas quanto as variáveis de resposta possui um comportamento linear em sua relação, por exemplo, quando um valor Y é uma função linear de X representado na Figura 4. Já a não-linear é o oposto da linear, é quando a relação entre as variáveis de resposta e predição não segue um comportamento linear, no caso, as relações entre as variáveis podem ser representadas na forma de uma função polinomial. 
+A técnica de regressão pode ser classificada em linear e não-linear. Segundo \citeonline{Camilo2009}, são chamados de linear quando tanto as variáveis preditivas quanto as variáveis de resposta possui um comportamento linear em sua relação, por exemplo, quando um valor Y é uma função linear de X representado na Figura 4. Já a não-linear é o oposto da linear, é quando a relação entre as variáveis de resposta e predição não segue um comportamento linear, no caso, as relações entre as variáveis podem ser representadas na forma de uma função polinomial, como demonstrado na Figura 5. 
 
 \begin{figure}[!htp]
 	\begin{center}
@@ -119,13 +119,21 @@ A técnica de regressão pode ser classificada em linear e não-linear. Segundo 
     \legend{Fonte:\cite{JoaoPaulo}}
 \end{figure}
 
+\begin{figure}[!htp]
+	\begin{center}
+    \caption{\label{fig:waveform_fig} Gráfico de uma análise de resíduos para modelo de regressão não linear.}
+	\includegraphics[scale=0.80]{Figuras/Regressao_nao_linear.png}
+	\end{center}
+    \legend{Fonte:\cite{Paula}}
+\end{figure}
+
 \subsubsection{Agrupamento (Clustering)}
 
 \par
 Outra tarefa de descrição, é um método de divisão de um conjunto de dados heterogêneos para um grupo homogêneo \cite{LeandroSilva2014}. Ele tende a reconhecer e aproximar os registros similares, isto é, ele junta um conjunto de registro semelhantes entre si que são diferentes de outros registros nos demais agrupamentos \cite{Camilo2009}. \textit{Clustering} difere da classificação, pois, não necessita que os dados sejam previamente classificados (aprendizado não-supervisionado).
 
 \par
-Segundo \cite{Camilo2009}, o agrupamento não tem a intenção de predizer, estimar ou classificar uma variável, ele somente reconhece os grupos de dados iguais, como é demonstrado na Figura 5. Alguns exemplos de \textit{clustering} como agrupar clientes por região do país ou com comportamento de compra similar, agrupar alunos com desempenho semelhantes, agrupar seções de usuários Web e entre outros.
+Segundo \cite{Camilo2009}, o agrupamento não tem a intenção de predizer, estimar ou classificar uma variável, ele somente reconhece os grupos de dados iguais, como é demonstrado na Figura 6. Alguns exemplos de \textit{clustering} como agrupar clientes por região do país ou com comportamento de compra similar, agrupar alunos com desempenho semelhantes, agrupar seções de usuários Web e entre outros.
 
 
 \begin{figure}[!htp]
@@ -158,7 +166,7 @@ Existem diversas atividades relacionadas ao conceito de aprendizagem, dificultan
 Em tese, se tem um modelo definido com alguns parâmetros, onde a aprendizagem é aplicada por um programa de computador para poder otimizar o parâmetro desse modelo utilizando dados de treinamento, sendo que, esse modelo pode ser preditivo, descritivo ou os dois \cite{Alpaydin2009}. No caso, a aprendizagem de máquina utiliza o princípio da estatística na elaboração de seus modelos, porque, a tarefa principal está fazendo a dedução a partir de uma amostra. 
 
 \par
-Segundo \citeonline{Henke2011}, os algoritmos de aprendizagem podem ser a solução para resolver diversos problemas, pois, eles podem aprender a determinar padrões das classes que estão envolvidas no problema, através de exemplos existentes obtidos do ambiente. Conforme o modelo genérico da Figura 6 sobre aprendizagem de máquina ocorre o seguinte, o ambiente concede a informação para um elemento de aprendizagem, que utiliza essa informação para melhorar a base de conhecimento para que o elemento de desempenho a use na execução de sua tarefa. 
+Segundo \citeonline{Henke2011}, os algoritmos de aprendizagem podem ser a solução para resolver diversos problemas, pois, eles podem aprender a determinar padrões das classes que estão envolvidas no problema, através de exemplos existentes obtidos do ambiente. Conforme o modelo genérico da Figura 7 sobre aprendizagem de máquina ocorre o seguinte, o ambiente concede a informação para um elemento de aprendizagem, que utiliza essa informação para melhorar a base de conhecimento para que o elemento de desempenho a use na execução de sua tarefa. 
 
 \begin{figure}[!htp]
 	\begin{center}
@@ -186,17 +194,17 @@ Para a compreensão mais abrangente dos algoritmos de aprendizagem de máquina, 
 \subsection{Tipos de Aprendizagem}
 
 \par
-Segundo \citeonline{Henke2011} a aprendizagem de máquina pode ser dividido em dois tipos principais de aprendizagem: aprendizagem com professor e aprendizagem sem o professor.
+Segundo \citeonline{Henke2011} a aprendizagem de máquina pode ser dividido em dois tipos principais de aprendizagem: aprendizagem supervisionada e aprendizagem não-supervisionada.
 
-\subsubsection{Aprendizagem com Professor}
+\subsubsection{Aprendizagem Supervisionada}
 
 \par
-Conhecido também como aprendizado supervisionado, nele se tem a figura de um professor externo, no qual apresenta o conhecimento do ambiente através de um conjunto de exemplos de pares de entrada e saída, onde são propagados em uma sequência de regras que a máquina acompanhara para se obter o efeito desejado \cite{Lorena2007, Henke2011}.
+Conhecido também como aprendizagem com o professor, nele se tem a figura de um professor externo, no qual apresenta o conhecimento do ambiente através de um conjunto de exemplos de pares de entrada e saída, onde são propagados em uma sequência de regras que a máquina acompanhara para se obter o efeito desejado \cite{Lorena2007, Henke2011}.
 
 \par
 Exemplos desse tipo de aprendizagem, no caso de regressão, dado uma imagem de uma pessoa, através dos dados da imagem fornecido temos que prever a sua idade. Em classificação, dado um exemplo de tumor cancerígeno, temos que prever através da idade e do tamanho do tumor do paciente se ele é maligno ou benigno \cite{Pedro}.
 
-\subsubsection{Aprendizagem sem Professor}
+\subsubsection{Aprendizagem Não-Supervisionada}
 
 \par
 Nesse não existe a presença de um professor, ou seja, não há exemplos rotulados de alguma função para ser aprendida \cite{Lorena2007, Henke2011}. Nessa aprendizagem são identificados dois tipos de subdivisão:
@@ -226,7 +234,7 @@ Existe uma extensa quantidade de algoritmos disponíveis para classificação, r
 Uma árvore é composta por três elementos importantes: os nós internos representam diferentes características, os ramos entre esses nós representam a possíveis valores que essas características podem possuir, enquanto os nós folhas representam o resultados, no caso, os valores de classificação da aplicação \cite{Henke2011, Barros2012}. Segundo \citeonline{Barros2012}, para a realização da classificação, deve ter uma tupla correspondente às características dos fluxos, que percorre pela árvore do nó raiz até  todos os nós folhas.  
 
 \par
-Para o melhor entendimento do processo de classificação de uma árvore de decisão, a Figura 7 mostra um exemplo usado no treinamento de dados para a tarefa de detecção de intrusão. De início, uma base de dados é fornecida ao algoritmo, onde, ele gera uma árvore feita para separar as amostras da classe Maligna de amostras da classe Benigna. Depois da construção da árvore, os dados novos podem ser fornecidos ao classificador, ao qual concedera uma das duas classes à amostra testada \cite{Henke2011}. 
+Para o melhor entendimento do processo de classificação de uma árvore de decisão, a Figura 8 mostra um exemplo usado no treinamento de dados para a tarefa de detecção de intrusão. De início, uma base de dados é fornecida ao algoritmo, onde, ele gera uma árvore feita para separar as amostras da classe Maligna de amostras da classe Benigna. Depois da construção da árvore, os dados novos podem ser fornecidos ao classificador, ao qual concedera uma das duas classes à amostra testada \cite{Henke2011}. 
 
 \begin{figure}[!htp]
 	\begin{center}
@@ -282,7 +290,7 @@ Redes Neurais é uma técnica originado da psicologia e neurobiologia, que comp�
 Segundo \cite{Carvalho2014}, na área de aprendizagem de máquina os algoritmos de redes neurais artificial são considerados poderosos, sendo que, são usados na resolução de problemas lineares e não-lineares, tendo apoio tanto no aprendizado supervisionado quanto no não supervisionado. Sua utilização mais constante é na solução de problemas não-lineares de classificação, através de uma estrutura conhecida com \textit{Multi-Layer Perceptron} (MPL) que sempre trabalha em conjunto nessa área de aprendizagem com o algoritmo mais conhecido, o algoritmo de Retropropagação (\textit{Backpropagation)}.
 
 \par
-Em bases de dados que possuam muitos ruídos, que no caso são as inconsistências encontradas no conjunto de dados de treinamento, a técnica de redes neural é bastante recomendada. Pois, eles conseguem ser relativamente quase imunes a este ruídos, diferentes de outros modelos de aprendizagem supervisionado como árvore de decisão que são severamente afetados por esses ruídos \cite{Carvalho2014}. A Figura 8 logo depois, apresenta as diversas camadas que podem ser criadas em um processamento de uma rede neural \cite{Cortes2002}.
+Em bases de dados que possuam muitos ruídos, que no caso são as inconsistências encontradas no conjunto de dados de treinamento, a técnica de redes neural é bastante recomendada. Pois, eles conseguem ser relativamente quase imunes a este ruídos, diferentes de outros modelos de aprendizagem supervisionado como árvore de decisão que são severamente afetados por esses ruídos \cite{Carvalho2014}. A Figura 9 logo depois, apresenta as diversas camadas que podem ser criadas em um processamento de uma rede neural \cite{Cortes2002}.
 
 \begin{figure}[!htp]
 	\begin{center}
@@ -305,30 +313,29 @@ Máquina de vetores de suporte é um algoritmo supervisionado que é usado para 
 \par
 O funcionamento do SVM pode ser dito da seguinte forma: se tem duas classes e um conjunto de treinamento onde as amostras pertencem as classes, a máquina vetor de suporte cria um hiperplano (conhecido como hiperplano de separação ótima) que divide o espaço de atributos em duas regiões, potencializando a margem de separação entre as mesmas. As amostras que antes não eram conhecidas são mapeadas para esse mesmo espaço e depois atribuídas a uma das classes \cite{Henke2011}.
 
+
+\par
+Como exemplo na Figura 10, suponhamos que os dados de treinamento sejam referentes aos alunos de uma turma com suas informações, apresentados como pontos, como a quantidade de postagens em um fórum de discussão (variável preditora). Além que, os dados representam cada aluno conforme o seu desempenho na disciplina (variável preditiva), alunos que passaram (pontos brancos) e que reprovaram (pontos pretos). A priori, a meta do SVM é encontrar a melhor maneira de separar os dois grupos de alunos \cite{Costa2012}.
+
+
 \begin{figure}[!htp]
 	\begin{center}
-    \caption{\label{fig:waveform_fig} Dados de treinamentos representando alunos que passaram (círculos brancos) e não passaram (círculos cinzas) em uma disciplina.}
-	\includegraphics[scale=0.60]{Figuras/SVM.png}
+    \caption{\label{fig:waveform_fig} Dados de treinamentos representando alunos que passaram (pontos brancos) e não passaram (pontos pretos) em uma disciplina.}
+	\includegraphics[scale=0.50]{Figuras/SVM.png}
 	\end{center}
     \legend{Fonte:\cite{Costa2012}}
 \end{figure}
-
-\par
-Como exemplo acima na Figura 9, suponhamos que os dados de treinamento sejam referentes aos alunos de uma turma com suas informações, apresentados como círculos, como a quantidade de postagens em um fórum de discussão (variável preditora). Além que, os dados representam cada aluno conforme o seu desempenho na disciplina (variável preditiva), alunos que passaram (círculos brancos) e que reprovaram (círculos cinzas). A priori, a meta do SVM é encontrar a melhor maneira de separar os dois grupos de alunos \cite{Costa2012}.
-
-
-
-\par
-Pode-se notar que existe uma quantidade infinita de hiperplanos que são representas na Figura 9 como essas linhas tracejadas, que podem separar as classes demonstradas que no caso são os círculos brancos e círculos cinzas. Então o propósito da máquina vetor de suporte é de encontrar o melhor hiperplano que maximize a distância entre elas das classes vizinhas. Um exemplo do melhor hiperplano para os dados que foram mostrado na Figura 9 encontrado pelo SVM é apresentado na Figura 10 \cite{Costa2012}. 
-
 
 \begin{figure}[!htp]
 	\begin{center}
     \caption{\label{fig:waveform_fig} Representação do melhor hiperplano que separa as classe, encontrado pelo algoritmo de SVM.}
-	\includegraphics[scale=0.60]{Figuras/SVM_2.png}
+	\includegraphics[scale=0.50]{Figuras/SVM_2.png}
 	\end{center}
     \legend{Fonte:\cite{Costa2012}}
 \end{figure}
+
+\par
+Pode-se notar que existe uma quantidade infinita de hiperplanos que são representas na Figura 10 como essas linhas tracejadas, que podem separar as classes demonstradas que no caso são os círculos brancos e círculos cinzas. Então o propósito da máquina vetor de suporte é de encontrar o melhor hiperplano que maximize a distância entre elas das classes vizinhas. Um exemplo do melhor hiperplano para os dados que foram mostrado na Figura 10 encontrado pelo SVM é apresentado na Figura 11 \cite{Costa2012}. 
 
 
 \par
@@ -373,9 +380,6 @@ Segundo \citeonline{Romao1999}, o algoritmo apriori possui três processos que �
 \par
 \textcolor{red}{Na fórmula acima, o numerador representa a quantidade de transações em que X e Y ocorrem simultaneamente e o denominador representa a quantidade de transações que o item X ocorre. No caso, o suporte (\autoref{eq:Suporte}) pode ser retratado como a probabilidade em que uma transação qualquer satisfaça tanto X quanto Y e na confiança (\autoref{eq:Confianca}) é a probabilidade que uma transação qualquer satisfaça Y, dado que ela ocorra em X.}
 
-\par
-\textcolor{red}{Para entender melhor esse processo, vamos pegar o exemplo que \citeonline{Vasconcelos2004} demonstraram.  Na Figura XX que representa uma tabela referente a base de dados de um supermercado, as colunas correspondem aos itens e as linhas correspondem as transações, os valores 0 e 1 representam a presença daquele item na transação correspondente, no caso, 0 refere-se a ausência do item e 1 refere-se a presença do item. O suporte mínimo especifica para o exemplo e de 30\% (0.3) e a confiança mínima é de 80\% (0.8).} 
-
 \begin{figure}[!htp]
 	\begin{center}
     \caption{\label{fig:waveform_fig} Tabela do exemplo da base de dados de um supermercado.}
@@ -383,6 +387,11 @@ Segundo \citeonline{Romao1999}, o algoritmo apriori possui três processos que �
 	\end{center}
     \legend{Fonte:\cite{Vasconcelos2004}}
 \end{figure}
+
+\par
+\textcolor{red}{Para entender melhor esse processo, vamos pegar o exemplo que \citeonline{Vasconcelos2004} demonstraram. Conforme a Figura 12 representada acima, que demonstra uma tabela referente a base de dados de um supermercado, as colunas correspondem aos itens e as linhas correspondem as transações, os valores 0 e 1 representam a presença daquele item na transação correspondente, no caso, 0 refere-se a ausência do item e 1 refere-se a presença do item. O suporte mínimo especifica para o exemplo e de 30\% (0.3) e a confiança mínima é de 80\% (0.8).} 
+
+
 
 \textcolor{red}{Os autores \citeonline{Vasconcelos2004} consideraram X = {Café} e Y = {Pão} e calcularam o suporte e a confiança para o conjunto {Café, Pão}. Ao verificarem na tabela, eles observaram que em apenas 3 transações (transação 1, 3 e 4) os dois itens aparecem com o valor 1 simutaneamente. Desa forma, pegando a fórmula do suporte que é apresentado na \autoref{eq:Suporte}, o numerador recebe o valor 3 (que foi a quantidade das transações em que os dois itens ocorreram ao mesmo tempo) e o denominador recebe o valor 10 (que é o numero total de transações ocorridas). Logo obtiveram, Suporte = 3/10 = 0.3 (30\%).}
 
@@ -446,19 +455,13 @@ Segundo \citeonline{Romao1999}, o algoritmo apriori possui três processos que �
 conjunto S caso utilize o atributo A para fazer a próxima partição.}
 
 \par
-\textcolor{red}{A construção de uma árvore de decisão tem três objetivos, quais sejam: diminuir a entropia (a aleatoriedade da variável objetivo), ser consistente com o conjunto de dados e possuir o menor número de nós \cite{Steiner2004}. Para melhor entendimento dos cálculos acima, será utilizado o exemplo do jogar tênis para ilustrar. Como demonstrado na Tabela XX, os conjuntos de atributos tempo, temperatura, umidade e vento que auxiliam na decisão de jogar tênis (sim ou não).}
-
-\par
-\textcolor{red}{}
-
-\par
-\textcolor{red}{}
+\textcolor{red}{A construção de uma árvore de decisão tem três objetivos, quais sejam: diminuir a entropia (a aleatoriedade da variável objetivo), ser consistente com o conjunto de dados e possuir o menor número de nós \cite{Steiner2004}. Para melhor entendimento dos cálculos acima, será utilizado o exemplo do jogar tênis para ilustrar. Como demonstrado na Tabela 1, os conjuntos de atributos tempo, temperatura, umidade e vento que auxiliam na decisão de jogar tênis (sim ou não).}
 
 \par
 \begin{table}[!htp]
 	\begin{center}
     \caption{\label{fig:waveform_fig} Base de treinamento do jogo tênis.}
-	\includegraphics[scale=0.60]{Figuras/Jogar_tenis.png}
+	\includegraphics[scale=0.65]{Figuras/Jogar_tenis.png}
 	\end{center}
 \end{table}
 
@@ -481,7 +484,7 @@ conjunto S caso utilize o atributo A para fazer a próxima partição.}
 
 \textit{Gain(Joga,Tempo)}={ 0,28 - ($\frac{5}{14}$).0,29 - ($\frac{5}{14}$).0 - ($\frac{5}{14}$).0,29 = 0,28 - 0,1 - 0 - 0,1 = 0,08} 
 \par
-\textcolor{red}{Para facilitar o entendimento do que foi feito, a Figura 12 apresenta o passo a passo do que foi feito:}
+\textcolor{red}{Para facilitar o entendimento do que foi feito, a Figura 13 apresenta o passo a passo do que foi feito:}
 
 \begin{figure}[!htp]
 	\begin{center}
@@ -496,15 +499,6 @@ conjunto S caso utilize o atributo A para fazer a próxima partição.}
 
 \par
 \textcolor{red}{A partir da raiz da variável Tempo, dependendo do ramo que for percorrido o cálculo de entropia e ganho de informação é aplicado para aquele caminho e sucessivamente para todos os ramos até gerar a arvore toda. Ou seja, o valor (ramo) Sol possui 5 atributos, o cálculo do ganho de informação dos outros atributos em relação a variável dependente Joga, vai estar sendo limitado por 5 registros apenas, como demonstrado na Tabela 2:}
-
-\par
-\textcolor{red}{}
-
-\par
-\textcolor{red}{}
-
-\par
-\textcolor{red}{}
 
 \par
 \begin{table}[!htp]
@@ -535,7 +529,7 @@ conjunto S caso utilize o atributo A para fazer a próxima partição.}
 \subsection{Matriz de Confusão}
 
 \par
-\textcolor{red}{Diferentemente da validação cruzada que só avalia a quantidade de instâncias que foram classificadas incorretamente, a matriz de confusão fornece uma estimativa mais detalhada, em comparação à classificação incorreta das classes \cite{Carvalho2014}. Segundo \citeonline{Monard2003}, a matriz mostra a quantidade de classificação correta versus as classificações preditas para cada uma das classes, sobre um conjunto de exemplo. Para entender o funcionamento dessa técnica, usaremos o exemplo da  tabela utilizada por \citeonline{Carvalho2014}, como demonstrado na Figura 13:}
+\textcolor{red}{Diferentemente da validação cruzada que só avalia a quantidade de instâncias que foram classificadas incorretamente, a matriz de confusão fornece uma estimativa mais detalhada, em comparação à classificação incorreta das classes \cite{Carvalho2014}. Segundo \citeonline{Monard2003}, a matriz mostra a quantidade de classificação correta versus as classificações preditas para cada uma das classes, sobre um conjunto de exemplo. Para entender o funcionamento dessa técnica, usaremos o exemplo da  tabela utilizada por \citeonline{Carvalho2014}, como demonstrado na Figura 14:}
 
 \par
 \begin{figure}[!htp]

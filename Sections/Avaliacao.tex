@@ -9,7 +9,7 @@
 \section{Avaliando Com o Algoritmo J48}
 
 \par
-\textcolor{red}{De forma para validar o modelo feito pela atividade de classificação, foi utilizada um filtro do Explore do WEKA chamado de \textit{RemovePercentage} para poder fazer a separação da base de dados para treinamento e teste. Possuindo 1.574 registros, a base de dados foi separada em duas partes, tendo como 70\% dos dados para treinamento com 1086 instancias e 30\% dos dados para teste com 486 instancias. Após o processo de utilizar o modelo de classificação do conjunto de treinamento para testar no conjunto de teste, o algoritmo J48 obteve como resultado uma precisão de 57\% das instâncias classificadas corretamente e de aproximadamente 43\% das instancias classificada incorretamente, como demonstrado na Figura 31.}
+\textcolor{red}{De forma para validar o modelo feito pela atividade de classificação, foi utilizada um filtro do Explore do WEKA chamado de \textit{RemovePercentage} para poder fazer a separação da base de dados para treinamento e teste. Possuindo 1.574 registros, a base de dados foi separada em duas partes, tendo como 70\% dos dados para treinamento com 1086 instancias e 30\% dos dados para teste com 486 instancias. Após o processo de utilizar o modelo de classificação do conjunto de treinamento para testar no conjunto de teste, o algoritmo J48 obteve como resultado uma precisão de 57\% das instâncias classificadas corretamente e de aproximadamente 43\% das instancias classificada incorretamente, como demonstrado na Figura 33.}
 
 \par
 \begin{figure}[!htp]
@@ -21,7 +21,7 @@
 \end{figure}
 
 \par
-\textcolor{red}{Na base de dados balanceada, através do software WEKA, á análise por arvore de decisão foi feita utilizando o algoritmo J48, usando a opção \textit{cross-validation} para a sua execução, com um valor para fold igual a dez e com a variável dependente Aprovado. A árvore de decisão foi capaz de identificar corretamente aproximadamente 53\% instâncias das 1.574 inseridas, como apresentado na Figura 32. Pode se notar que a taxa de acurácia obtida pelo algoritmo tem um valor aproximado da taxa do modelo de validação que foi mencionado, comprovando dessa forma que o modelo avaliado é considerado útil para ser utilizado.}
+\textcolor{red}{Na base de dados balanceada, através do software WEKA, á análise por arvore de decisão foi feita utilizando o algoritmo J48, usando a opção \textit{cross-validation} para a sua execução, com um valor para fold igual a dez e com a variável dependente Aprovado. A árvore de decisão foi capaz de identificar corretamente aproximadamente 53\% instâncias das 1.574 inseridas, como apresentado na Figura 34. Pode se notar que a taxa de acurácia obtida pelo algoritmo tem um valor aproximado da taxa do modelo de validação que foi mencionado, comprovando dessa forma que o modelo avaliado é considerado útil para ser utilizado.}
 
 \par
 \begin{figure}[!htp]
@@ -33,7 +33,7 @@
 \end{figure}
 
 \par
-\textcolor{red}{Na Figura 33 são apresentados os valores de acurácia para cada classe do atributo Aprovado. Pode-se notar que os valores de precisão apresentam resultados semelhantes para as classes Sim e Nao, com taxa acima dos 50\% e abaixo dos 70\% de precisão.}
+\textcolor{red}{Na Figura 35, são apresentados os valores de acurácia para cada classe do atributo Aprovado. Pode-se notar que os valores de precisão apresentam resultados semelhantes para as classes Sim e Nao, com taxa acima dos 50\% e abaixo dos 70\% de precisão.}
 
 \par
 \begin{figure}[!htp]
@@ -44,7 +44,7 @@
     \legend{Fonte: Próprio autor.}
 \end{figure}
 
-\textcolor{red}{A Figura 34, que apresenta matriz de classificação para cada classe, indica que, na classe Nao, de 779 ocorrências, apenas 366 registros foram classificados corretamente, enquanto na classe Sim, de 795 ocorrências, apenas 374 registros foram classificados corretamente.}
+\textcolor{red}{A Figura 36, que apresenta a matriz de confusão, para cada classe indica que: na classe Nao, de 779 ocorrências, apenas 366 registros foram classificados corretamente, enquanto na classe Sim, de 795 ocorrências, apenas 374 registros foram classificados corretamente.}
 
 \par
 \begin{figure}[!htp]
@@ -66,7 +66,7 @@
 \textcolor{red}{Para a mesma base de dados, foi realizado outra análise utilizando o algoritmo de associação Apriori, tendo como as parametrizações de suporte e confiança mínimos na geração das regras que sejam mais relevantes, para os resultados esperados associada a variável Aprovado. Para o suporte e confiança mínima para avaliação, foi utilizado como base a porcentagem usada no trabalho de \citeonline{LeandroSilva2014}, que foi feito testes com 50\%, 30\%, 25\% e 15\% de suporte geração dos items set e 70\% de confiança na geração de regras para todos os casos de suporte avaliados.}
 
 \par
-\textcolor{red}{Para os testes, foi utilizado toda a base de dados com um total de 8571 registros. Na janela de configuração do algoritmo Apriori apresentado na Figura 35, foi definido para a quantidade máxima de regras geradas foi colocado na opção \textit{numRules} o número 100 para todos os teste, logo acima, no parâmetro \textit{metricType} a métrica utilizada nos testes foi a de confiança tendo a sua taxa como 70\% para as regras geradas, e para os limites inferiores (\textit{lowerBoundMinSupport}) e superiores (\textit{upperBoundMinSupport}) mínimo de suporte é a opção que é definido a taxa de porcentagem mínima do suporte.}
+\textcolor{red}{Para os testes, foi utilizado toda a base de dados com um total de 8571 registros. Na janela de configuração do algoritmo Apriori apresentado na Figura 37, foi definido para a quantidade máxima de regras geradas foi colocado na opção \textit{numRules} o número 100 para todos os teste, logo acima, no parâmetro \textit{metricType} a métrica utilizada nos testes foi a de confiança tendo a sua taxa como 70\% para as regras geradas, e para os limites inferiores (\textit{lowerBoundMinSupport}) e superiores (\textit{upperBoundMinSupport}) mínimo de suporte é a opção que é definido a taxa de porcentagem mínima do suporte.}
 
 
 \par
@@ -87,7 +87,7 @@
 \textcolor{red}{No intuito de resolver esse tipo de problema, para que ele possa gerar as melhores regras para ambas as classes, foi feita a separação da base em 2 partes, uma base com os candidatos que foram aprovados com um total de 787 registros e outra base com os candidatos que não foram aprovados com um total de 7784 registros. Após todo esse processo, foi feito os testes paras as duas bases, tendo com sucesso regras geradas para ambas as partes. Os testes foram feitos com 3 quantidades de atributos diferente, sendo que, uma foi feito com os atributos que sobraram após a remoção dos que eram desnecessários para o trabalho (22 atributos), os atributos que a seleção de atributos do WEKA selecionou como mais relevantes para a classificação (9 atributos) e o atributos que \citeonline{LeandroSilva2014} selecionaram para os testes de associação do trabalho deles (4 atributos).}
 
 \par
-\textcolor{red}{O motivo da escolha desses atributos para os testes, foi para saber os resultados que eram obtidos nos três tipos, principalmente na base com 22 atributo, saber também, se tem alguma semelhança com os resultados do trabalho de \citeonline{LeandroSilva2014} e também com os resultados obtidos com o algoritmo de classificação utilizado nesse trabalho. Na Tabela 2, apresenta as parametrizações de suporte e confiança utilizadas para o algoritmo Apriori, junto com as regras geradas paras as quatros porcentagens de suporte testadas, regras essas associada a variável Aprovado.}
+\textcolor{red}{O motivo da escolha desses atributos para os testes, foi para saber os resultados que eram obtidos nos três tipos, principalmente na base com 22 atributo, saber também, se tem alguma semelhança com os resultados do trabalho de \citeonline{LeandroSilva2014} e também com os resultados obtidos com o algoritmo de classificação utilizado nesse trabalho. Na Tabela 4, apresenta as parametrizações de suporte e confiança utilizadas para o algoritmo Apriori, junto com as regras geradas paras as quatros porcentagens de suporte testadas, regras essas associada a variável Aprovado.}
 
 
 \par
@@ -102,7 +102,7 @@
 \textcolor{red}{Podemos notar que nas colunas de 4 atributos e 9 atributos da classe Não, para todos as porcentagens de suportes mínimos testado, nenhuma regra foi gerada, diferente da coluna de não aprovados com 22 atributos, que de três dos quatros suportes mínimos testados geraram pelo menos uma regra. Na coluna de 22 atributos para a classe Sim de aprovados, podemos obsservar que ela obteve as maiores quantidades de regras geradas para todas as taxas de suporte mínimo especificadas e que para as demais colunas da classe sim para os outros atributos, pelo menos uma regra foi gerada.}
 
 \par
-\textcolor{red}{Durantes os testes foi analisando também, que tanto para os candidatos aprovados quanto para os não aprovados, possuíam a mesma quantidade de ciclo de performance (vezes que o algoritmo foi executado) para obter as regras geradas, sendo que para o suporte de 50\% ele executou 10 vezes, 30\% executou 14 vezes, 25\% executou 15 vezes e para 15\% ele executou 17vezes. Também foi observado que durante a avaliação dos dados, para cada teste do suporte, a quantidade de itens set gerados variavam de 1 produto até no máximo 11 produtos gerados, como apresentado no exemplo da Figura 36.}
+\textcolor{red}{Durantes os testes foi analisando também, que tanto para os candidatos aprovados quanto para os não aprovados, possuíam a mesma quantidade de ciclo de performance (vezes que o algoritmo foi executado) para obter as regras geradas, sendo que para o suporte de 50\% ele executou 10 vezes, 30\% executou 14 vezes, 25\% executou 15 vezes e para 15\% ele executou 17vezes. Também foi observado que durante a avaliação dos dados, para cada teste do suporte, a quantidade de itens set gerados variavam de 1 produto até no máximo 11 produtos gerados, como apresentado no exemplo da Figura 38.}
 
 
 \par

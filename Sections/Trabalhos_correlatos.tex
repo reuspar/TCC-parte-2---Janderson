@@ -9,7 +9,7 @@ Neste capítulo serão apresentados alguns trabalhos relacionados com este, que 
 O trabalho de \citeonline{Simon2017} tem como objetivo em gerar um modelo preditivo da base de desempenho médio na área de ciências da natureza e suas tecnologias dos alunos de escolas do ensino médio, baseado nos dados públicos obtidos do Exame Nacional do Ensino Médio (ENEM) de 2015. Tal motivação foi pelo fato do cenário preocupante do baixo desempenho dos alunos do ensino básico no Brasil, conforme os dados de 2015 do PISA (\textit{Programme for International Students Assessment}).
 
 \par
-Segundo \citeonline{Simon2017} foi feito o pré-processamento dos dados do ENEM fornecidos pelo INEP, sendo que para cada área avaliada apresentavam-se 25 colunas que representavam uma informação ou variável, onde cada uma delas eram divididas em três categorias: características da escola, indicadores e desempenho. Das 25 variáveis, apenas 9 foram selecionadas como importante para a mineração de dados conforme o indicador da coluna Id representado na Figura 11. 
+Segundo \citeonline{Simon2017} foi feito o pré-processamento dos dados do ENEM fornecidos pelo INEP, sendo que para cada área avaliada apresentavam-se 25 colunas que representavam uma informação ou variável, onde cada uma delas eram divididas em três categorias: características da escola, indicadores e desempenho. Das 25 variáveis, apenas 9 foram selecionadas como importante para a mineração de dados conforme o indicador da coluna Id representado na Figura 15. 
 
 \begin{figure}[!htp]
 	\begin{center}
@@ -20,7 +20,7 @@ Segundo \citeonline{Simon2017} foi feito o pré-processamento dos dados do ENEM 
 \end{figure}
 
 \par
-\citeonline{Simon2017} destacaram que a variável Média Escola indicava o desempenho médio dos alunos da escola na área de ciências da natureza e suas tecnologias, onde esses dados eram fornecidos como valor numérico pelo INEP, então para facilitar a mineração dos dados, ele teve que converte-lo para uma categoria mais limitada que foi dividida em quatro valores possíveis, segundo a escala prevista pelo INEP conforme a Figura 12. Os dados fornecidos pelo INEP, vinham em uma planilha no formato .xlsx e teve que ser convertido para .csv, pois, o formato não era suportado pelo software WEKA.
+\citeonline{Simon2017} destacaram que a variável Média Escola indicava o desempenho médio dos alunos da escola na área de ciências da natureza e suas tecnologias, onde esses dados eram fornecidos como valor numérico pelo INEP, então para facilitar a mineração dos dados, ele teve que converte-lo para uma categoria mais limitada que foi dividida em quatro valores possíveis, segundo a escala prevista pelo INEP conforme a Figura 16. Os dados fornecidos pelo INEP, vinham em uma planilha no formato .xlsx e teve que ser convertido para .csv, pois, o formato não era suportado pelo software WEKA.
 
 
 \begin{figure}[!htp]
@@ -59,7 +59,7 @@ Para o trabalho de \citeonline{Silva2014}, foi utilizado o banco de dados com os
 Na parte de pré-processamento, foi selecionado somente os dados das capitais do Sudeste que resultaram em 452.710 alunos, que entretanto, foram eliminados 310.000 alunos das quatros capitais, pois, eles não compareceram no dia da prova. As questões selecionadas para a pesquisa  foram de quantas pessoas moravam com o candidato, a renda familiar mensal, o nível de escolaridade da mãe e o tipo de escola que cursou no ensino médio. Sendo que essas questões foram analisadas para saber se contribuía, interferia ou afetava a nota e o desempenho do candidato na prova.
 
 \par
-Baseado nas respostas das questões analisadas, a nota da prova objetiva foi classificada conforme o conceito mostrada na Figura 13. Para a preparação da regra de associação, \citeonline{Silva2014} fez uma limpeza e integração nos dados, alterando as colunas principais para binominais, quer dizer, em 0 e 1, sendo 1 a opção que foi respondida no questionário e 0 para o restante das opções que não foi escolhida no mesmo questionário, isso aplica também a categoria da prova, como podemos ver representado na Figura 14, onde o aluno não foi inserido sendo três de quatro delas. 
+Baseado nas respostas das questões analisadas, a nota da prova objetiva foi classificada conforme o conceito mostrada na Figura 17. %Para a preparação da regra de associação, \citeonline{Silva2014} fez uma limpeza e integração nos dados, alterando as colunas principais para binominais, quer dizer, em 0 e 1, sendo 1 a opção que foi respondida no questionário e 0 para o restante das opções que não foi escolhida no mesmo questionário, isso aplica também a categoria da prova, como podemos ver representado na Figura 14, onde o aluno não foi inserido sendo três de quatro delas. 
 
 
 \begin{figure}[!htp]
@@ -70,30 +70,33 @@ Baseado nas respostas das questões analisadas, a nota da prova objetiva foi cla
     \legend{Fonte:\cite{Silva2014}}
 \end{figure}
 
-\begin{figure}[!htp]
-	\begin{center}
-    \caption{\label{fig:waveform_fig} Amostragem de alguns dos dados limpos e integrados.}
-	\includegraphics[scale=0.49]{Figuras/Dados_limpos_integrados.png}
-	\end{center}
-    \legend{Fonte:\cite{Silva2014}}
-\end{figure}
+%\begin{figure}[!htp]
+%	\begin{center}
+%    \caption{\label{fig:waveform_fig} Amostragem de alguns dos dados limpos e integrados.}
+%	\includegraphics[scale=0.49]{Figuras/Dados_limpos_integrados.png}
+%	\end{center}
+%    \legend{Fonte:\cite{Silva2014}}
+%\end{figure}
+
+%\par
+%Observando a segunda linha da Figura 14, percebemos que o candidato é da cidade de Belo Horizonte, mora no total de sete pessoas contando com ele, a mãe dele possui o 1º grau de nível de escolaridade e que a classificação da nota da prova objetiva dele é regular. Para o melhor entendimento, \citeonline{Silva2014} especifica os critérios das colunas, que são:
+
+%\begin{itemize}
+%    \item \textbf{NU\_INSCRICAO:} O número de identificação do candidato. 
+%    \item \textbf{UFXX:} A sigla da cidade onde o candidato mora.
+%    \item \textbf{QXXABC:} Sendo XX a questão escolhida de acordo com o questionário socioeconômico, ABC representa alternativa escolhida da questão de forma abreviada.
+%    \item \textbf{NOTAXXX:} Sendo XXX a classificação da nota da prova que o candidato conseguiu. 
+%\end{itemize}
 
 \par
-Observando a segunda linha da Figura 14, percebemos que o candidato é da cidade de Belo Horizonte, mora no total de sete pessoas contando com ele, a mãe dele possui o 1º grau de nível de escolaridade e que a classificação da nota da prova objetiva dele é regular. Para o melhor entendimento, \citeonline{Silva2014} especifica os critérios das colunas, que são:
-
-\begin{itemize}
-    \item \textbf{NU\_INSCRICAO:} O número de identificação do candidato. 
-    \item \textbf{UFXX:} A sigla da cidade onde o candidato mora.
-    \item \textbf{QXXABC:} Sendo XX a questão escolhida de acordo com o questionário socioeconômico, ABC representa alternativa escolhida da questão de forma abreviada.
-    \item \textbf{NOTAXXX:} Sendo XXX a classificação da nota da prova que o candidato conseguiu. 
-\end{itemize}
+Para os experimentos que foram feitos, \citeonline{Silva2014} utilizou o software RapidMiner 5.1 que usa o código aberto Java, e para a tarefa de associação de dados, é usado o algoritmo apriori que na etapa de verificação de itens conjuntos ele faz um processo interativo para a combinação de itens. Este algoritmo realiza busca por largura e é definido em três características: suporte mínimo, confiança mínima e K-itemset.
 
 \par
-Para os experimentos que foram feitos, \citeonline{Silva2014} utilizou o software RapidMiner 5.1 que usa o código aberto Java, e para a tarefa de associação de dados, é usado o algoritmo apriori que na etapa de verificação de itens conjuntos ele faz um processo interativo para a combinação de itens. Este algoritmo realiza busca por largura e é definido em três características: suporte mínimo, confiança mínima e K-itemset. Lembrando que o suporte é a frequência o qual uma regra é aplicada em um determinado conjunto de dados e a confiança mede a confiabilidade da interferência feita por uma regra. 
+Dentre as 4 simulações, a regra com maior confiança obtida em cada uma delas, se analisou o seguinte: na simulação 1, se aluno tirou nota regular na prova então ele é de escola pública (80\% de confiança, ocorre 53\% dos alunos), na simulação 2 se os pais tivessem escolaridade de até o primeiro grau então ele era de escola pública (89\% de confiança, ocorre 36\% dos alunos), na simulação 3 se o candidato é de escola pública e possui pais com escolaridade de até o 1º grau, então sua nota da prova é regular (90\% de confiança, ocorre 28\% dos alunos) e na simulação 4 se a nota do candidato é regular, possuir a renda familiar de três salários mínimos e a escolaridade dos pais for de até o 1º, então ele é de escola pública (92\% de confiança, ocorre com 19\% dos alunos).  
 
 \par
-Conforme a Figura 15, \citeonline{Silva2014} observou que a medida que o suporte e a confiança diminuía, o número de regras aumentava.   
-
+Fazendo todos os testes, \citeonline{Silva2014} observou que a medida que o suporte e a confiança diminuía, o número de regras aumentava, como é representado conforme a Figura 18.
+ 
 \begin{figure}[!htp]
 	\begin{center}
     \caption{\label{fig:waveform_fig} Simulação de Suporte e Confiança.}
@@ -102,24 +105,24 @@ Conforme a Figura 15, \citeonline{Silva2014} observou que a medida que o suporte
     \legend{Fonte:\cite{Silva2014}}
 \end{figure}
 
-\par
-Das quatros simulações, em cada uma se analisou o seguinte: na simulação 1, a regra aplicada era se o aluno era de escola publica então a sua nota prova seria regular (76\% de confiança, ocorre 53\% dos alunos) e a outra regra se o aluno tirou nota regular na prova então ele é de escola pública (80\% de confiança, ocorre 53\% dos alunos). Na simulação 2 a primeira regra com confiança mais baixa gerada era se o candidato morasse com quatro e sete pessoas então ele era de escola pública (74\% de confiança, ocorre 31\% dos alunos) e a última regra com maior confiança era se os pais tivessem escolaridade de até o primeiro grau então ele era de escola pública (89\% de confiança, ocorre 36\% dos alunos).
+%\par
+%Das quatros simulações, em cada uma se analisou o seguinte: na simulação 1, a regra aplicada era se o aluno era de escola publica então a sua nota prova seria regular (76\% de confiança, ocorre 53\% dos alunos) e a outra regra se o aluno tirou nota regular na prova então ele é de escola pública (80\% de confiança, ocorre 53\% dos alunos). Na simulação 2 a primeira regra com confiança mais baixa gerada era se o candidato morasse com quatro e sete pessoas então ele era de escola pública (74\% de confiança, ocorre 31\% dos alunos) e a última regra com maior confiança era se os pais tivessem escolaridade de até o primeiro grau então ele era de escola pública (89\% de confiança, ocorre 36\% dos alunos).
 
-\par
-Na simulação 3, a primeira regra gerada de menor confiança é se os pais tivessem escolaridade de até o 1º grau então o candidato é de escola pública e a nota da prova é regular (71\% de confiança, ocorre 28\% dos alunos), e a última regra com maior confiança e se o candidato é de escola pública e possui pais com escolaridade de até o 1º grau, então sua nota da prova é regular (90\% de confiança, ocorre 19\% dos alunos). Na simulação 4, \citeonline{Silva2014} observou que alguns atributos como escolaridade dos pais (2GR) e a renda familiar levava (TRE) o candidato a obter uma nota regular (REG) ou vim de uma escola pública (PUB), como podemos perceber na última regra com maior confiança na Figura 16.
+%\par
+%Na simulação 3, a primeira regra gerada de menor confiança é se os pais tivessem escolaridade de até o 1º grau então o candidato é de escola pública e a nota da prova é regular (71\% de confiança, ocorre 28\% dos alunos), e a última regra com maior confiança e se o candidato é de escola pública e possui pais com escolaridade de até o 1º grau, então sua nota da prova é regular (90\% de confiança, ocorre 19\% dos alunos). Na simulação 4, \citeonline{Silva2014} observou que alguns atributos como escolaridade dos pais (2GR) e a renda familiar levava (TRE) o candidato a obter uma nota regular (REG) ou vim de uma escola pública (PUB), como podemos perceber na última regra com maior confiança na Figura 16.
 
 % Podemos evidenciar na penúltima regra que, se o aluno tirou nota regular na prova, os pais tiveram escolaridade até o primeiro grau e a renda da família for de um a três salários mínimos então o aluno estudou em escola pública com 92% de confiança, ocorrendo em 19% dos alunos
 
-\begin{figure}[!htp]
-	\begin{center}
-    \caption{\label{fig:waveform_fig} Simulação 4, Suporte Mínimo 25\% e Confiança Mínima 70\%.}
-	\includegraphics[scale=0.49]{Figuras/Simulacao_quatro.png}
-	\end{center}
-    \legend{Fonte:\cite{Silva2014}}
-\end{figure}
+%\begin{figure}[!htp]
+%	\begin{center}
+%    \caption{\label{fig:waveform_fig} Simulação 4, Suporte Mínimo 25\% e Confiança Mínima 70\%.}
+%	\includegraphics[scale=0.49]{Figuras/Simulacao_quatro.png}
+%	\end{center}
+%    \legend{Fonte:\cite{Silva2014}}
+%\end{figure}
 
 \par
-Como representado na Figura 17, \citeonline{Silva2014} verificou que ao diminuir o valor do suporte mínimo, há um acréscimo em casos encontrados na base de dados que utiliza associação de dados, em que se tem regras mais verdadeiras, chegando pelo menos a 90\% de confiança, que são geradas na simulação correspondentes. Para a demonstração, \citeonline{Silva2014} criou faixas de confianças que começava a partir de 70\%, onde, cada faixa era verificada entre as simulações com a quantidade de regras que eram geradas, como por exemplo, na simulação 1, dentre as duas regras, se tinha de 76\% e 81\% de confiança, então ele se enquadra na faixa de 70\% até 80\%, totalizando 50\%.
+Como representado na Figura 19, \citeonline{Silva2014} verificou que ao diminuir o valor do suporte mínimo, há um acréscimo em casos encontrados na base de dados que utiliza associação de dados, em que se tem regras mais verdadeiras, chegando pelo menos a 90\% de confiança, que são geradas na simulação correspondentes. Para a demonstração, \citeonline{Silva2014} criou faixas de confianças que começava a partir de 70\%, onde, cada faixa era verificada entre as simulações com a quantidade de regras que eram geradas, como por exemplo, na simulação 1, dentre as duas regras, se tinha de 76\% e 81\% de confiança, então ele se enquadra na faixa de 70\% até 80\%, totalizando 50\%.
 
 \begin{figure}[!htp]
 	\begin{center}
@@ -184,7 +187,7 @@ Em \citeonline{Simon2017}, motivados pelos problemas de infraestrutura apresenta
 Por fim, \citeonline{Martinhago2005} investigou a base de dados sobre os vestibulandos da UFPR de 2003, como os dados dos questionários socioeconômico preenchidos pelos candidatos durante as inscrições, os dados do cadastro geral que contém as notas obtidas da prova e redação e o resultado do vestibular em conjunto com as notas e média das notas obtidas pelo ENEM, para poder traçar o perfil dos vestibulandos, utilizando a técnica de mineração árvore de decisão.
 
 \par
-A Tabela 1 visa prestar uma breve comparação entre as características chaves dos trabalhos relacionados e as propostas deste trabalho.
+A Tabela 3 visa prestar uma breve comparação entre as características chaves dos trabalhos relacionados e as propostas deste trabalho.
 
 \begin{table}[h!]
 \caption{Comparação entre os trabalhos correlacionados e a proposta deste trabalho.}
