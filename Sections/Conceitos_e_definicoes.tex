@@ -460,7 +460,7 @@ conjunto S caso utilize o atributo A para fazer a próxima partição.}
 \par
 \begin{table}[!htp]
 	\begin{center}
-    \caption{\label{fig:waveform_fig} Base de treinamento do jogo tênis.}
+    \caption{\label{fig:waveform_fig} Base de treinamento do jogar tênis.}
 	\includegraphics[scale=0.65]{Figuras/Jogar_tenis.png}
 	\end{center}
 \end{table}
@@ -482,9 +482,9 @@ conjunto S caso utilize o atributo A para fazer a próxima partição.}
 \par
 \textcolor{red}{Depois de fazer o cálculo da entropia para cada valor da variável Tempo, aplicamos os resultados deles ao cálculo de ganho de informação, onde o valor da entropia original é subtraído pela soma da quantidade de vezes em que o valor do registro apareceu dividido pelo total de registros da sua variável pertencente sendo multiplicado pela sua respectiva entropia. No caso, a variável tempo possui 14 registro no total, contendo 5 registros para o valor Sol possuindo o valor de entropia de 0,29 em relação as classes da variável Joga, 4 registros para o valor Nublado com o valor de entropia de 0 e 5 registros para o valor Chuva com o valor de entropia de 0,29, como demonstrado logo abaixo:}
 
-\textit{Gain(Joga,Tempo)}={ 0,28 - ($\frac{5}{14}$).0,29 - ($\frac{5}{14}$).0 - ($\frac{5}{14}$).0,29 = 0,28 - 0,1 - 0 - 0,1 = 0,08} 
+\textit{Gain(Joga,Tempo)}={ 0,28 - ($\frac{5}{14}$).0,29 - ($\frac{4}{14}$).0 - ($\frac{5}{14}$).0,29 = 0,28 - 0,1 - 0 - 0,1 = 0,08} 
 \par
-\textcolor{red}{Para facilitar o entendimento do que foi feito, a Figura 13 apresenta o passo a passo do que foi feito:}
+\textcolor{red}{Para o melhor entendimento, a Figura 13 apresenta os passos do que foi feito:}
 
 \begin{figure}[!htp]
 	\begin{center}
@@ -498,15 +498,51 @@ conjunto S caso utilize o atributo A para fazer a próxima partição.}
 \textcolor{red}{Fazendo o mesmo cálculo para os outros atributos a taxa de ganho obtido foi: 0,02 para temperatura, 0,01 para umidade e 0,02 para vento. Analisando com o resultado que já foi obtido do ganho de informação do atributo Tempo (0,08), percebemos que o atributo Tempo possui a taxa de ganho mais alta, logo, se for utilizado somente o atributo Tempo, terá uma alta probabilidade de se obter uma classificação mais interessante para a árvore. Logo, o atributo Tempo vai estar na raiz da árvore de decisão.}
 
 \par
-\textcolor{red}{A partir da raiz da variável Tempo, dependendo do ramo que for percorrido o cálculo de entropia e ganho de informação é aplicado para aquele caminho e sucessivamente para todos os ramos até gerar a arvore toda. Ou seja, o valor (ramo) Sol possui 5 atributos, o cálculo do ganho de informação dos outros atributos em relação a variável dependente Joga, vai estar sendo limitado por 5 registros apenas, como demonstrado na Tabela 2:}
+\textcolor{red}{A partir da raiz da variável Tempo, dependendo do ramo que for percorrido, o cálculo de entropia e ganho de informação é aplicado para aquele caminho e sucessivamente para todos os ramos até gerar a arvore toda, sendo que esse cálculo será feito somente para aqueles atributos que ainda não foram selecionados anteriormente. Por exemplo, o valor (ramo) Sol possui 5 atributos, o cálculo do ganho de informação dos outros atributos em relação a variável dependente joga, vai estar sendo limitado por 5 registros apenas, o cálculo será feito para todos os atributos com exceção do atributo tempo, como demonstrado na Tabela 2:}
 
 \par
 \begin{table}[!htp]
 	\begin{center}
     \caption{\label{fig:waveform_fig} Registros do valor Sol.}
-	\includegraphics[scale=0.90]{Figuras/Ramo_sol.png}
+	\includegraphics[scale=0.70]{Figuras/Ramo_sol.png}
 	\end{center}
 \end{table}
+
+\subsubsection{Razão do Ganho de Informação}
+
+\par
+\textcolor{red}{Apesar de ser uma métrica eficiente, o ganho de informação possui um problema: este tipo de cálculo favorece os atributos que possuem uma grande quantidade de valores (arestas), fazendo com que gere árvores muitos largas, que não são desejáveis \cite{Garcia2003}. Para contornar essa situação, o algoritmo J48 utiliza uma extensão do ganho de informação, conhecida como razão de ganho. Esta extensão inclui um novo termo, que penaliza atributos que possuam muitos valores \cite{Carvalho2014}.}
+
+\textcolor{red}{Este novo termo, chamado de Divisão de Informação, não é mais que a entropia da informação do atributo de A em relação ao conjunto de dados de S, como definido pela \autoref{eq:Info}:}
+
+\begin{equation}
+    \label{eq:Info}
+        {\textit{DivInfo(S,A)}={ - \sum_{v=1}^{n} \frac{|S_v|}{|S|} \log_{2}(\frac{|S_v|}{|S|}) } }
+\end{equation}
+
+\par
+\textcolor{red}{Onde, $S_v$ é o subconjunto de exemplos resultante do particionamento de S pelos \textit{n} valores do atributo A. Com base nisso, a Razão do Ganho é dada pela divisão do ganho de informação sobre a divisão de informação \autoref{eq:Razao}:}
+
+\begin{equation}
+    \label{eq:Razao}
+        {\textit{GainRatio(S,A)}={ \frac{Gain(S,A)}{DivInfo(S,A)} } }
+\end{equation}
+
+
+\par
+\textcolor{red}{Vamos pegar como exemplo a base de treinamento jogar tênis para realizar o cálculo de razão do ganho de informação. Começando com o cálculo de divisão de informação para o atributo Tempo em relação ao conjunto de dados Joga, temos:}
+
+\textit{DivInfo(Joga,Tempo)}={ - ($\frac{5}{14}$)$\log_{2}(\frac{5}{14})$ - ($\frac{4}{14}$)$\log_{2}(\frac{4}{14})$ - ($\frac{5}{14}$)$\log_{2}(\frac{5}{14})$ = 0,16 + 0,15 + 0,16} 
+
+= 0,47
+
+\par
+\textcolor{red}{Utilizando o ganho de informação que foi obtido para o atributo Tempo em relação ao atributo Joga, o resultado da razão do ganho de informação, obtido para este atributo é:}
+
+\textit{GainRatio(Joga,Tempo)}={ - ($\frac{0,08}{0,47}$) = 0,17} 
+
+\par
+\textcolor{red}{Em casos de razão de ganho com resultados muito alto, por conta do denominador receber valores muito próximos de zero, quando grande parte das instancias possuem o mesmo valor em um atributo, o algoritmo J48 para contornar essa situação, aplica o cálculo da razão de ganho, somente quando o valor obtido pelo Ganho de Informação é maior que a média dos Ganhos de todos os outros atributos \cite{Carvalho2014}.}
 
 \section{Validação do Modelo}
 
@@ -545,6 +581,30 @@ conjunto S caso utilize o atributo A para fazer a próxima partição.}
 
 \par
 \textcolor{red}{Podemos notar que a matriz de confusão é uma ótima ferramenta para verificar a acurácia do algoritmo, fornecendo maiores informações da estimativa de erro obtida pela validação cruzada.}
+
+\subsection{A Curva de Receiver Operating Characteristic (ROC)}
+
+\par
+\textcolor{red}{Com base nos resultados obtidos da matriz de confusão na execução do modelo, diversas métricas podem ser usadas para avaliar o desempenho do modelo. A duas que são consideradas como mais importantes para a análise são: a sensibilidade é a capacidade do modelo em predizer corretamente a condição para casos que realmente têm e a especificidade, que é a capacidade do modelo em predizer corretamente a ausência da condição para casos que realmente não têm (predizer corretamente que determinada classe NÃO pertence a determinada classe)\cite{Cesar, Carvalho2014}.}
+
+\par
+\textcolor{red}{Segundo \citeonline{Carvalho2014}, essas duas métricas támbem são chamadas de Taxa de Verdadeiro Positivo (TVP) e Taxa de Verdadeiro Negativo (TVN), sendo que, as duas métricas são complementares entre si. Além da matriz de confusão, a análise dos resultados do modelo será feita por meio do gráfico conhecido como curva de ROC. A figura 15, demonstra um exemplo de curva ROC:}
+
+\par
+\begin{figure}[!htp]
+	\begin{center}
+    \caption{\label{fig:waveform_fig} Gráfico da curva ROC.}
+	\includegraphics[scale=0.80]{Figuras/Curva_roc.png}
+	\end{center}
+    \legend{Fonte:\cite{Carvalho2014}}
+\end{figure}
+
+\par
+\textcolor{red}{O gráfico da curva ROC nada mais é que uma representação por linhas (plotagem) de duas métricas calculadas com base na matriz de confusão: Taxa de verdadeiros Positivos e a inversa de Taxa Verdadeiros Negativos, a Taxa de Falsos Positivos (FTP). Cada registro se tornar um ponto no gráfico, tendo o seu desempenho avaliado através da sua proximidade com o canto superior esquerdo do gráfico, no caso, o modelo apresentado acima classifica todos os seus registros corretamente, sem os Falsos Positivos ou Falsos Negativos (TVP = 1.0 E TFP = 0.0) \cite{Cesar, Carvalho2014}.}
+
+\par
+\textcolor{red}{O gráfico apresentado, possui uma linha que o corta em diagonal, representados a chance de uma classificação aleatória, os registros que são classificados acima dessa linha são considerados bons ou moderados e os registros que se encontram abaixo da linha, são descartados \cite{Carvalho2014}.}
+
 
 %==========================
 % MINERAÇÃO DE DADOS EDUCACIONAIS

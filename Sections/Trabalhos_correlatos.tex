@@ -9,7 +9,7 @@ Neste capítulo serão apresentados alguns trabalhos relacionados com este, que 
 O trabalho de \citeonline{Simon2017} tem como objetivo em gerar um modelo preditivo da base de desempenho médio na área de ciências da natureza e suas tecnologias dos alunos de escolas do ensino médio, baseado nos dados públicos obtidos do Exame Nacional do Ensino Médio (ENEM) de 2015. Tal motivação foi pelo fato do cenário preocupante do baixo desempenho dos alunos do ensino básico no Brasil, conforme os dados de 2015 do PISA (\textit{Programme for International Students Assessment}).
 
 \par
-Segundo \citeonline{Simon2017} foi feito o pré-processamento dos dados do ENEM fornecidos pelo INEP, sendo que para cada área avaliada apresentavam-se 25 colunas que representavam uma informação ou variável, onde cada uma delas eram divididas em três categorias: características da escola, indicadores e desempenho. Das 25 variáveis, apenas 9 foram selecionadas como importante para a mineração de dados conforme o indicador da coluna Id representado na Figura 15. 
+Segundo \citeonline{Simon2017} foi feito o pré-processamento dos dados do ENEM fornecidos pelo INEP, sendo que para cada área avaliada apresentavam-se 25 colunas que representavam uma informação ou variável, onde cada uma delas eram divididas em três categorias: características da escola, indicadores e desempenho. Das 25 variáveis, apenas 9 foram selecionadas como importante para a mineração de dados conforme o indicador da coluna Id representado na Figura 16. 
 
 \begin{figure}[!htp]
 	\begin{center}
@@ -20,7 +20,7 @@ Segundo \citeonline{Simon2017} foi feito o pré-processamento dos dados do ENEM 
 \end{figure}
 
 \par
-\citeonline{Simon2017} destacaram que a variável Média Escola indicava o desempenho médio dos alunos da escola na área de ciências da natureza e suas tecnologias, onde esses dados eram fornecidos como valor numérico pelo INEP, então para facilitar a mineração dos dados, ele teve que converte-lo para uma categoria mais limitada que foi dividida em quatro valores possíveis, segundo a escala prevista pelo INEP conforme a Figura 16. Os dados fornecidos pelo INEP, vinham em uma planilha no formato .xlsx e teve que ser convertido para .csv, pois, o formato não era suportado pelo software WEKA.
+\citeonline{Simon2017} destacaram que a variável Média Escola indicava o desempenho médio dos alunos da escola na área de ciências da natureza e suas tecnologias, onde esses dados eram fornecidos como valor numérico pelo INEP, então para facilitar a mineração dos dados, ele teve que converte-lo para uma categoria mais limitada que foi dividida em quatro valores possíveis, segundo a escala prevista pelo INEP conforme a Figura 17. Os dados fornecidos pelo INEP, vinham em uma planilha no formato .xlsx e teve que ser convertido para .csv, pois, o formato não era suportado pelo software WEKA.
 
 
 \begin{figure}[!htp]
@@ -59,7 +59,7 @@ Para o trabalho de \citeonline{Silva2014}, foi utilizado o banco de dados com os
 Na parte de pré-processamento, foi selecionado somente os dados das capitais do Sudeste que resultaram em 452.710 alunos, que entretanto, foram eliminados 310.000 alunos das quatros capitais, pois, eles não compareceram no dia da prova. As questões selecionadas para a pesquisa  foram de quantas pessoas moravam com o candidato, a renda familiar mensal, o nível de escolaridade da mãe e o tipo de escola que cursou no ensino médio. Sendo que essas questões foram analisadas para saber se contribuía, interferia ou afetava a nota e o desempenho do candidato na prova.
 
 \par
-Baseado nas respostas das questões analisadas, a nota da prova objetiva foi classificada conforme o conceito mostrada na Figura 17. %Para a preparação da regra de associação, \citeonline{Silva2014} fez uma limpeza e integração nos dados, alterando as colunas principais para binominais, quer dizer, em 0 e 1, sendo 1 a opção que foi respondida no questionário e 0 para o restante das opções que não foi escolhida no mesmo questionário, isso aplica também a categoria da prova, como podemos ver representado na Figura 14, onde o aluno não foi inserido sendo três de quatro delas. 
+Baseado nas respostas das questões analisadas, a nota da prova objetiva foi classificada conforme o conceito mostrada na Figura 18. %Para a preparação da regra de associação, \citeonline{Silva2014} fez uma limpeza e integração nos dados, alterando as colunas principais para binominais, quer dizer, em 0 e 1, sendo 1 a opção que foi respondida no questionário e 0 para o restante das opções que não foi escolhida no mesmo questionário, isso aplica também a categoria da prova, como podemos ver representado na Figura 14, onde o aluno não foi inserido sendo três de quatro delas. 
 
 
 \begin{figure}[!htp]
@@ -95,7 +95,7 @@ Para os experimentos que foram feitos, \citeonline{Silva2014} utilizou o softwar
 Dentre as 4 simulações, a regra com maior confiança obtida em cada uma delas, se analisou o seguinte: na simulação 1, se aluno tirou nota regular na prova então ele é de escola pública (80\% de confiança, ocorre 53\% dos alunos), na simulação 2 se os pais tivessem escolaridade de até o primeiro grau então ele era de escola pública (89\% de confiança, ocorre 36\% dos alunos), na simulação 3 se o candidato é de escola pública e possui pais com escolaridade de até o 1º grau, então sua nota da prova é regular (90\% de confiança, ocorre 28\% dos alunos) e na simulação 4 se a nota do candidato é regular, possuir a renda familiar de três salários mínimos e a escolaridade dos pais for de até o 1º, então ele é de escola pública (92\% de confiança, ocorre com 19\% dos alunos).  
 
 \par
-Fazendo todos os testes, \citeonline{Silva2014} observou que a medida que o suporte e a confiança diminuía, o número de regras aumentava, como é representado conforme a Figura 18.
+Fazendo todos os testes, \citeonline{Silva2014} observou que a medida que o suporte e a confiança diminuía, o número de regras aumentava, como é representado conforme a Figura 19.
  
 \begin{figure}[!htp]
 	\begin{center}
