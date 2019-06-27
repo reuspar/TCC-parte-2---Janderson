@@ -350,82 +350,20 @@ O algoritmo apriori, é um dentre os algoritmos mais utilizados para mineração
 \par
 Segundo \citeonline{Romao1999}, o algoritmo apriori possui três processos que é a geração dos conjuntos de candidatos, a poda dos conjuntos dos candidatos e a contagem de suporte que seria no caso a extração de regras de associação. A propriedade antmonotonia do algoritmo apriori poderia ser explicado da seguinte forma, se X está contido Y e X não é um \textit{itemset} frequente, logo o Y também não será frequente. Isso evita uma grande quantidade de tempo de execução, pois, se X não é frequente, não há a necessidade de calcular o suporte de Y e o todo o banco de dados não precisará ser verificado.
 
+
+\subsubsection{J48}
+
+\textcolor{red}{O algoritmo J48 é baseado no algoritmo de árvore de decisão conhecido como C4.5. Ele surgiu da necessidade de recodificar da linguagem C em que foi escrito o algoritmo em que ele se baseou, para a linguagem em Java. O J48 tem como finalidade, formar a árvore mais apropriada sobre um conjunto de dados de treinamento, através das podas das regras que melhoram a sua precisão \cite{Marques2014, Librelotto2014}. Esse algoritmo possibilita a criação de modelos de decisão em árvore, sendo, que cada nó da árvore avalia o nível de relevância de cada atributo individualmente.}
+
+\par
+\textcolor{red}{Para a construção da árvore de decisão, o algoritmo J48 utiliza a abordagem de dividir-para-conquistar, onde essa técnica consiste em dividir um problema maior recursivamente em subproblemas menores, dividindo o espaço definido pelos atributos em subespaços, associando-se a eles uma classe, até que o problema possa ser resolvido diretamente \cite{Librelotto2014}.}
+
+
 %==========================
 % PARAMETROS
 %==========================
 
 \section{Parâmetros Utilizados Para Classificação e Associação}
-
-\subsection{Suporte, Confiança e Lift}
-
-\par
-\textcolor{red}{Na associação, o método para se encontrar as regras para ela pode ser dividido em duas partes. A primeira é a de descobrir todos os \textit{itemset} (conjunto de itens) que possuam um suporte com transações igual ou superior ao limite mínimo que foi especificado, onde os itens encontrados são conhecidos como o conjunto de itens frequentes, e a segunda parte é a de gerar as regras de associação a partir dos \textit{itemset} frequentes encontrados, no qual, serão selecionado apenas as regras que possuam um grau de confiança mínima especificado pelo usuário \cite{Vasconcelos2004, LeandroSilva2014}.}
-
-\textcolor{red}{Praticamente, dado um conjunto de transações, o objetivo em minerar por regras de associação é a de encontrar todas as regras que possuam o suporte e a confiança iguais ou superiores ao valores minimo especificado pelo úsuario \cite{Vasconcelos2004}. O suporte de uma regra X $\rightarrow$ Y, onde X e Y são  \textit{itemset}, é dada pela seguinte fórmula apresentada na \autoref{eq:Suporte}:}
-
-
-\begin{equation}
-    \label{eq:Suporte}
-        {\textit{Suporte}\quad =\frac { \textit{Frequência de X e Y} }{ \textit{Total de T}} }
-\end{equation}
-
-\par
-\textcolor{red}{A fórmula pode ser interpretada da seguinte maneira, o numerador representa a quantidade de transações que ocorrem simultaneamente tanto para X quanto para Y e o denominador representa o total de transações a qual aquele conjunto pertence. Já para a confiança, é dada pela seguinte fórmula que é demonstrada na \autoref{eq:Confianca}:}
-
-\begin{equation}
-    \label{eq:Confianca}
-        {\textit{Confiaça}\quad =\frac { \textit{Frequência de X e Y} }{ \textit{Frequência de X}} }
-\end{equation}
-
-\par
-\textcolor{red}{Na fórmula acima, o numerador representa a quantidade de transações em que X e Y ocorrem simultaneamente e o denominador representa a quantidade de transações que o item X ocorre. No caso, o suporte (\autoref{eq:Suporte}) pode ser retratado como a probabilidade em que uma transação qualquer satisfaça tanto X quanto Y e na confiança (\autoref{eq:Confianca}) é a probabilidade que uma transação qualquer satisfaça Y, dado que ela ocorra em X.}
-
-\begin{figure}[!htp]
-	\begin{center}
-    \caption{\label{fig:waveform_fig} Tabela do exemplo da base de dados de um supermercado.}
-	\includegraphics[scale=0.80]{Figuras/Tabela_da_base_de_supermercado.png}
-	\end{center}
-    \legend{Fonte:\cite{Vasconcelos2004}}
-\end{figure}
-
-\par
-\textcolor{red}{Para entender melhor esse processo, vamos pegar o exemplo que \citeonline{Vasconcelos2004} demonstraram. Conforme a Figura 12 representada acima, que demonstra uma tabela referente a base de dados de um supermercado, as colunas correspondem aos itens e as linhas correspondem as transações, os valores 0 e 1 representam a presença daquele item na transação correspondente, no caso, 0 refere-se a ausência do item e 1 refere-se a presença do item. O suporte mínimo especifica para o exemplo e de 30\% (0.3) e a confiança mínima é de 80\% (0.8).} 
-
-
-
-\textcolor{red}{Os autores \citeonline{Vasconcelos2004} consideraram X = {Café} e Y = {Pão} e calcularam o suporte e a confiança para o conjunto {Café, Pão}. Ao verificarem na tabela, eles observaram que em apenas 3 transações (transação 1, 3 e 4) os dois itens aparecem com o valor 1 simutaneamente. Desa forma, pegando a fórmula do suporte que é apresentado na \autoref{eq:Suporte}, o numerador recebe o valor 3 (que foi a quantidade das transações em que os dois itens ocorreram ao mesmo tempo) e o denominador recebe o valor 10 (que é o numero total de transações ocorridas). Logo obtiveram, Suporte = 3/10 = 0.3 (30\%).}
-
-\par
-\textcolor{red}{Para a confiança, \citeonline{Vasconcelos2004} pegaram os mesmos itens (Café, Pão) que foram comprovados que eles possuem um suporte igual ou superior que 30\%, o calculo foi feito da seguinte forma: o numerador recebeu o mesmo valor que foi obtido no numerador da equação do suporte que é 3 e o denominador recebeu a quantidade de transações que os itens de X possuem como valor 1 em relação a transação total (10 transações), logo ele recebe o valor como 3. Portanto, Confiança = 3/3 = 1 (100\%). Logo, a regra gerada Café $\rightarrow$ Pão (se o cliente compra café, então ele compra pão) ocorre com 100\% das transações (compras efetuadas).}
-
-\par
-\textcolor{red}{Uma observação que tem que ser feita, é que o cálculo do suporte é feito para todos os conjuntos de itens que ocorrem na mesma transação, desde a quantidade mínima de itens até o conjunto da quantidade máxima de itens. No caso, pegando os dados do supermercado utilizado, como é apresentado na figura da tabela mostrado anteriormente, o mínimo do conjunto de itens é de 1 e o máximo do conjunto itens é de 4 que ocorrem na mesma transação, como é o caso da transação 4 (Leite, Café, Pão, Manteiga). Em casos onde é gerado uma grande quantida de regras que possuam um valor de confiança igual ou surperior ao que foi determinado, para saber quais entre elas é a melhor regra, é recomendado que utilize a medida de interesse Lift.}
-
-\par
-\textcolor{red}{Segundo \citeonline{Gonsalves2004}, o lift é uma métrica de avaliação de regras de associação que demonstra para cada regra gerada o grau de relevância dela, podendo assim, fazer uma filtragem das mais relevantes. A fórmula do lift funciona da seguinte forma, como apresentado na \autoref{eq:Lift}:}
-
-\begin{equation}
-    \label{eq:Lift}
-        {\textit{Lift (X $\rightarrow$ Y)}\quad =\frac { \textit{Confiança (X $\rightarrow$ Y)} }{ \textit{Suporte de Y}} }
-\end{equation}
-
-\par
-\textcolor{red}{O numerador representa o valor de confiança da regra que foi obtida X $\rightarrow$ Y e o denominador representa o valor de suporte obtido de Y. No caso, o lift pode ser tratado como o qual mais frequente se torna Y quando X $\rightarrow$ Y ocorre \cite{Gonsalves2004}. Para esclarecer melhor, ainda com o exemplo dosupermercado, determinamos um lift maior ou igual a 2, pegando pelo menos 3 regras que passaram de 80\% de confiança: Café $\rightarrow$ Pão com 100\%, Café $\rightarrow$ Manteiga com 100\% e Pão $\rightarrow$ Manteiga com 80\%. E pegando tambem os suporte de pão e manteiga com 50\%. Logo, temos o seguinte:}
-
-\textit{Lift (Café $\rightarrow$ Pão)} = \textit{Confiança (Café $\rightarrow$ Pão)} /  \textit{Suporte (Pão)} = 1 / 0,5 = 2
-    
-\textit{Lift (Café $\rightarrow$ Manteiga)} = \textit{Confiança (Café $\rightarrow$ Manteiga)} /  \textit{Suporte (Manteiga)} = 1 / 0,5 
-
-= 2
-    
-\textit{Lift (Pão $\rightarrow$ Manteiga)} = \textit{Confiança (Pão $\rightarrow$ Manteiga)} /  \textit{Suporte (Manteiga)} = 0,8 / 0,5 
-
-= 1,6
-
-
-\par
-\textcolor{red}{}
-
 
 \subsection{Entropia e Ganho de Informação}
 
@@ -484,7 +422,7 @@ conjunto S caso utilize o atributo A para fazer a próxima partição.}
 
 \textit{Gain(Joga,Tempo)}={ 0,28 - ($\frac{5}{14}$).0,29 - ($\frac{4}{14}$).0 - ($\frac{5}{14}$).0,29 = 0,28 - 0,1 - 0 - 0,1 = 0,08} 
 \par
-\textcolor{red}{Para o melhor entendimento, a Figura 13 apresenta os passos do que foi feito:}
+\textcolor{red}{Para o melhor entendimento, a Figura 12 apresenta os passos do que foi feito:}
 
 \begin{figure}[!htp]
 	\begin{center}
@@ -543,6 +481,79 @@ conjunto S caso utilize o atributo A para fazer a próxima partição.}
 
 \par
 \textcolor{red}{Em casos de razão de ganho com resultados muito alto, por conta do denominador receber valores muito próximos de zero, quando grande parte das instancias possuem o mesmo valor em um atributo, o algoritmo J48 para contornar essa situação, aplica o cálculo da razão de ganho, somente quando o valor obtido pelo Ganho de Informação é maior que a média dos Ganhos de todos os outros atributos \cite{Carvalho2014}.}
+
+
+
+\subsection{Suporte, Confiança e Lift}
+
+\par
+\textcolor{red}{Na associação, o método para se encontrar as regras para ela pode ser dividido em duas partes. A primeira é a de descobrir todos os \textit{itemset} (conjunto de itens) que possuam um suporte com transações igual ou superior ao limite mínimo que foi especificado, onde os itens encontrados são conhecidos como o conjunto de itens frequentes, e a segunda parte é a de gerar as regras de associação a partir dos \textit{itemset} frequentes encontrados, no qual, serão selecionado apenas as regras que possuam um grau de confiança mínima especificado pelo usuário \cite{Vasconcelos2004, LeandroSilva2014}.}
+
+\textcolor{red}{Praticamente, dado um conjunto de transações, o objetivo em minerar por regras de associação é a de encontrar todas as regras que possuam o suporte e a confiança iguais ou superiores ao valores minimo especificado pelo úsuario \cite{Vasconcelos2004}. O suporte de uma regra X $\rightarrow$ Y, onde X e Y são  \textit{itemset}, é dada pela seguinte fórmula apresentada na \autoref{eq:Suporte}:}
+
+
+\begin{equation}
+    \label{eq:Suporte}
+        {\textit{Suporte}\quad =\frac { \textit{Frequência de X e Y} }{ \textit{Total de T}} }
+\end{equation}
+
+\par
+\textcolor{red}{A fórmula pode ser interpretada da seguinte maneira, o numerador representa a quantidade de transações que ocorrem simultaneamente tanto para X quanto para Y e o denominador representa o total de transações a qual aquele conjunto pertence. Já para a confiança, é dada pela seguinte fórmula que é demonstrada na \autoref{eq:Confianca}:}
+
+\begin{equation}
+    \label{eq:Confianca}
+        {\textit{Confiaça}\quad =\frac { \textit{Frequência de X e Y} }{ \textit{Frequência de X}} }
+\end{equation}
+
+\par
+\textcolor{red}{Na fórmula acima, o numerador representa a quantidade de transações em que X e Y ocorrem simultaneamente e o denominador representa a quantidade de transações que o item X ocorre. No caso, o suporte (\autoref{eq:Suporte}) pode ser retratado como a probabilidade em que uma transação qualquer satisfaça tanto X quanto Y e na confiança (\autoref{eq:Confianca}) é a probabilidade que uma transação qualquer satisfaça Y, dado que ela ocorra em X.}
+
+\par
+\textcolor{red}{Para entender melhor esse processo, vamos pegar o exemplo que \citeonline{Vasconcelos2004} demonstraram. Conforme a Figura 13, que demonstra uma tabela referente a base de dados de um supermercado, as colunas correspondem aos itens e as linhas correspondem as transações, os valores 0 e 1 representam a presença daquele item na transação correspondente, no caso, 0 refere-se a ausência do item e 1 refere-se a presença do item. O suporte mínimo especifica para o exemplo e de 30\% (0.3) e a confiança mínima é de 80\% (0.8).}
+
+
+\begin{figure}[!htp]
+	\begin{center}
+    \caption{\label{fig:waveform_fig} Tabela do exemplo da base de dados de um supermercado.}
+	\includegraphics[scale=0.80]{Figuras/Tabela_da_base_de_supermercado.png}
+	\end{center}
+    \legend{Fonte:\cite{Vasconcelos2004}}
+\end{figure}
+
+
+\textcolor{red}{Os autores \citeonline{Vasconcelos2004} consideraram X = {Café} e Y = {Pão} e calcularam o suporte e a confiança para o conjunto {Café, Pão}. Ao verificarem na tabela, eles observaram que em apenas 3 transações (transação 1, 3 e 4) os dois itens aparecem com o valor 1 simutaneamente. Desa forma, pegando a fórmula do suporte que é apresentado na \autoref{eq:Suporte}, o numerador recebe o valor 3 (que foi a quantidade das transações em que os dois itens ocorreram ao mesmo tempo) e o denominador recebe o valor 10 (que é o numero total de transações ocorridas). Logo obtiveram, Suporte = 3/10 = 0.3 (30\%).}
+
+\par
+\textcolor{red}{Para a confiança, \citeonline{Vasconcelos2004} pegaram os mesmos itens (Café, Pão) que foram comprovados que eles possuem um suporte igual ou superior que 30\%, o calculo foi feito da seguinte forma: o numerador recebeu o mesmo valor que foi obtido no numerador da equação do suporte que é 3 e o denominador recebeu a quantidade de transações que os itens de X possuem como valor 1 em relação a transação total (10 transações), logo ele recebe o valor como 3. Portanto, Confiança = 3/3 = 1 (100\%). Logo, a regra gerada Café $\rightarrow$ Pão (se o cliente compra café, então ele compra pão) ocorre com 100\% das transações (compras efetuadas).}
+
+\par
+\textcolor{red}{Uma observação que tem que ser feita, é que o cálculo do suporte é feito para todos os conjuntos de itens que ocorrem na mesma transação, desde a quantidade mínima de itens até o conjunto da quantidade máxima de itens. No caso, pegando os dados do supermercado utilizado, como é apresentado na figura da tabela mostrado anteriormente, o mínimo do conjunto de itens é de 1 e o máximo do conjunto itens é de 4 que ocorrem na mesma transação, como é o caso da transação 4 (Leite, Café, Pão, Manteiga). Em casos onde é gerado uma grande quantida de regras que possuam um valor de confiança igual ou surperior ao que foi determinado, para saber quais entre elas é a melhor regra, é recomendado que utilize a medida de interesse Lift.}
+
+\par
+\textcolor{red}{Segundo \citeonline{Gonsalves2004}, o lift é uma métrica de avaliação de regras de associação que demonstra para cada regra gerada o grau de relevância dela, podendo assim, fazer uma filtragem das mais relevantes. A fórmula do lift funciona da seguinte forma, como apresentado na \autoref{eq:Lift}:}
+
+\begin{equation}
+    \label{eq:Lift}
+        {\textit{Lift (X $\rightarrow$ Y)}\quad =\frac { \textit{Confiança (X $\rightarrow$ Y)} }{ \textit{Suporte de Y}} }
+\end{equation}
+
+\par
+\textcolor{red}{O numerador representa o valor de confiança da regra que foi obtida X $\rightarrow$ Y e o denominador representa o valor de suporte obtido de Y. No caso, o lift pode ser tratado como o qual mais frequente se torna Y quando X $\rightarrow$ Y ocorre \cite{Gonsalves2004}. Para esclarecer melhor, ainda com o exemplo dosupermercado, determinamos um lift maior ou igual a 2, pegando pelo menos 3 regras que passaram de 80\% de confiança: Café $\rightarrow$ Pão com 100\%, Café $\rightarrow$ Manteiga com 100\% e Pão $\rightarrow$ Manteiga com 80\%. E pegando tambem os suporte de pão e manteiga com 50\%. Logo, temos o seguinte:}
+
+\textit{Lift (Café $\rightarrow$ Pão)} = \textit{Confiança (Café $\rightarrow$ Pão)} /  \textit{Suporte (Pão)} = 1 / 0,5 = 2
+    
+\textit{Lift (Café $\rightarrow$ Manteiga)} = \textit{Confiança (Café $\rightarrow$ Manteiga)} /  \textit{Suporte (Manteiga)} = 1 / 0,5 
+
+= 2
+    
+\textit{Lift (Pão $\rightarrow$ Manteiga)} = \textit{Confiança (Pão $\rightarrow$ Manteiga)} /  \textit{Suporte (Manteiga)} = 0,8 / 0,5 
+
+= 1,6
+
+
+\par
+\textcolor{red}{}
+
 
 \section{Validação do Modelo}
 
