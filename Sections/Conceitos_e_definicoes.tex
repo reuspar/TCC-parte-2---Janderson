@@ -345,10 +345,10 @@ Embora SVM seja uma técnica recente, ela tem atraído muita atenção pelos seu
 \subsubsection{Apriori}
 
 \par
-O algoritmo apriori, é um dentre os algoritmos mais utilizados para mineração por regras de associação. Este algoritmo utiliza busca por profundidade e gera um conjunto de itens padrões (candidatos) de k elementos a partir de itens k-1 elementos. Os itens candidatos que não são frequentes são excluídos. Tudo da base de dados é rastreada e a partir dos conjuntos de itens candidatos, os itens frequentes são obtidos \cite{Vasconcelos2004}. Além disso, o algoritmo possui vários atributos que otimizam o seu desempenho, uma delas é antmonotonia da relação, que diz que para cada \textit{itemset} ser frequente, todos do seu subconjunto devem ser também, além de usar estrutura hash e recursos da memória principal.
+O algoritmo Apriori, é um dentre os algoritmos mais utilizados para mineração por regras de associação. Este algoritmo utiliza busca por profundidade e gera um conjunto de itens padrões (candidatos) de k elementos a partir de itens k-1 elementos. Os itens candidatos que não são frequentes são excluídos. Tudo da base de dados é rastreada e a partir dos conjuntos de itens candidatos, os itens frequentes são obtidos \cite{Vasconcelos2004}. Além disso, o algoritmo possui vários atributos que otimizam o seu desempenho, uma delas é antmonotonia da relação, que diz que para cada \textit{itemset} ser frequente, todos do seu subconjunto devem ser também, além de usar estrutura hash e recursos da memória principal.
 
 \par
-Segundo \citeonline{Romao1999}, o algoritmo apriori possui três processos que é a geração dos conjuntos de candidatos, a poda dos conjuntos dos candidatos e a contagem de suporte que seria no caso a extração de regras de associação. A propriedade antmonotonia do algoritmo apriori poderia ser explicado da seguinte forma, se X está contido Y e X não é um \textit{itemset} frequente, logo o Y também não será frequente. Isso evita uma grande quantidade de tempo de execução, pois, se X não é frequente, não há a necessidade de calcular o suporte de Y e o todo o banco de dados não precisará ser verificado.
+Segundo \citeonline{Romao1999}, o algoritmo Apriori possui três processos que é a geração dos conjuntos de candidatos, a poda dos conjuntos dos candidatos e a contagem de suporte que seria no caso a extração de regras de associação. A propriedade antmonotonia do algoritmo Apriori poderia ser explicado da seguinte forma, se X está contido Y e X não é um \textit{itemset} frequente, logo o Y também não será frequente. Isso evita uma grande quantidade de tempo de execução, pois, se X não é frequente, não há a necessidade de calcular o suporte de Y e o todo o banco de dados não precisará ser verificado.
 
 
 \subsubsection{J48}
@@ -389,7 +389,7 @@ Segundo \citeonline{Romao1999}, o algoritmo apriori possui três processos que �
 \end{equation}
 
 \par
-\textcolor{red}{A \textit{Entropy(S)} representa a entropia original (classes da variável dependente), no caso, a entropia das classes da variavel dependente (Aprovado:Sim ou Não), \textit{Values(A)} representa os conjunto dos valores que A pode assumir, \textit{v} um elemento deste conjunto e $S_v$ o subconjunto de S formado pelos dados em que A=v. Sendo que \textit{Entropy(S)} é uma medida de homogeneidade  dos exemplos contidos em um conjunto de dados (S), \textit{Values(A)} é uma medida de homogeneidade estimada para o
+\textcolor{red}{A \textit{Entropy(S)} representa a entropia original (classes da variável dependente), no caso, a entropia das classes da variável dependente (Aprovado:Sim ou Não), \textit{Values(A)} representa os conjunto dos valores que A pode assumir, \textit{v} um elemento deste conjunto e $S_v$ o subconjunto de S formado pelos dados em que A=v. Sendo que \textit{Entropy(S)} é uma medida de homogeneidade  dos exemplos contidos em um conjunto de dados (S), \textit{Values(A)} é uma medida de homogeneidade estimada para o
 conjunto S caso utilize o atributo A para fazer a próxima partição.}
 
 \par
@@ -477,7 +477,7 @@ conjunto S caso utilize o atributo A para fazer a próxima partição.}
 \par
 \textcolor{red}{Utilizando o ganho de informação que foi obtido para o atributo Tempo em relação ao atributo Joga, o resultado da razão do ganho de informação, obtido para este atributo é:}
 
-\textit{GainRatio(Joga,Tempo)}={ - ($\frac{0,08}{0,47}$) = 0,17} 
+\textit{GainRatio(Joga,Tempo)}={ ($\frac{0,08}{0,47}$) = 0,17} 
 
 \par
 \textcolor{red}{Em casos de razão de ganho com resultados muito alto, por conta do denominador receber valores muito próximos de zero, quando grande parte das instancias possuem o mesmo valor em um atributo, o algoritmo J48 para contornar essa situação, aplica o cálculo da razão de ganho, somente quando o valor obtido pelo Ganho de Informação é maior que a média dos Ganhos de todos os outros atributos \cite{Carvalho2014}.}
@@ -489,7 +489,7 @@ conjunto S caso utilize o atributo A para fazer a próxima partição.}
 \par
 \textcolor{red}{Na associação, o método para se encontrar as regras para ela pode ser dividido em duas partes. A primeira é a de descobrir todos os \textit{itemset} (conjunto de itens) que possuam um suporte com transações igual ou superior ao limite mínimo que foi especificado, onde os itens encontrados são conhecidos como o conjunto de itens frequentes, e a segunda parte é a de gerar as regras de associação a partir dos \textit{itemset} frequentes encontrados, no qual, serão selecionado apenas as regras que possuam um grau de confiança mínima especificado pelo usuário \cite{Vasconcelos2004, LeandroSilva2014}.}
 
-\textcolor{red}{Praticamente, dado um conjunto de transações, o objetivo em minerar por regras de associação é a de encontrar todas as regras que possuam o suporte e a confiança iguais ou superiores ao valores minimo especificado pelo úsuario \cite{Vasconcelos2004}. O suporte de uma regra X $\rightarrow$ Y, onde X e Y são  \textit{itemset}, é dada pela seguinte fórmula apresentada na \autoref{eq:Suporte}:}
+\textcolor{red}{Praticamente, dado um conjunto de transações, o objetivo em minerar por regras de associação é a de encontrar todas as regras que possuam o suporte e a confiança iguais ou superiores ao valores mínimo especificado pelo usuário \cite{Vasconcelos2004}. O suporte de uma regra X $\rightarrow$ Y, onde X e Y são  \textit{itemset}, é dada pela seguinte fórmula apresentada na \autoref{eq:Suporte}:}
 
 
 \begin{equation}
@@ -502,7 +502,7 @@ conjunto S caso utilize o atributo A para fazer a próxima partição.}
 
 \begin{equation}
     \label{eq:Confianca}
-        {\textit{Confiaça}\quad =\frac { \textit{Frequência de X e Y} }{ \textit{Frequência de X}} }
+        {\textit{Confiança}\quad =\frac { \textit{Frequência de X e Y} }{ \textit{Frequência de X}} }
 \end{equation}
 
 \par
@@ -521,13 +521,13 @@ conjunto S caso utilize o atributo A para fazer a próxima partição.}
 \end{figure}
 
 
-\textcolor{red}{Os autores \citeonline{Vasconcelos2004} consideraram X = {Café} e Y = {Pão} e calcularam o suporte e a confiança para o conjunto {Café, Pão}. Ao verificarem na tabela, eles observaram que em apenas 3 transações (transação 1, 3 e 4) os dois itens aparecem com o valor 1 simutaneamente. Desa forma, pegando a fórmula do suporte que é apresentado na \autoref{eq:Suporte}, o numerador recebe o valor 3 (que foi a quantidade das transações em que os dois itens ocorreram ao mesmo tempo) e o denominador recebe o valor 10 (que é o numero total de transações ocorridas). Logo obtiveram, Suporte = 3/10 = 0.3 (30\%).}
+\textcolor{red}{Os autores \citeonline{Vasconcelos2004} consideraram X = {Café} e Y = {Pão} e calcularam o suporte e a confiança para o conjunto {Café, Pão}. Ao verificarem na tabela, eles observaram que em apenas 3 transações (transação 1, 3 e 4) os dois itens aparecem com o valor 1 simultaneamente. Desa forma, pegando a fórmula do suporte que é apresentado na \autoref{eq:Suporte}, o numerador recebe o valor 3 (que foi a quantidade das transações em que os dois itens ocorreram ao mesmo tempo) e o denominador recebe o valor 10 (que é o numero total de transações ocorridas). Logo obtiveram, Suporte = 3/10 = 0.3 (30\%).}
 
 \par
 \textcolor{red}{Para a confiança, \citeonline{Vasconcelos2004} pegaram os mesmos itens (Café, Pão) que foram comprovados que eles possuem um suporte igual ou superior que 30\%, o calculo foi feito da seguinte forma: o numerador recebeu o mesmo valor que foi obtido no numerador da equação do suporte que é 3 e o denominador recebeu a quantidade de transações que os itens de X possuem como valor 1 em relação a transação total (10 transações), logo ele recebe o valor como 3. Portanto, Confiança = 3/3 = 1 (100\%). Logo, a regra gerada Café $\rightarrow$ Pão (se o cliente compra café, então ele compra pão) ocorre com 100\% das transações (compras efetuadas).}
 
 \par
-\textcolor{red}{Uma observação que tem que ser feita, é que o cálculo do suporte é feito para todos os conjuntos de itens que ocorrem na mesma transação, desde a quantidade mínima de itens até o conjunto da quantidade máxima de itens. No caso, pegando os dados do supermercado utilizado, como é apresentado na figura da tabela mostrado anteriormente, o mínimo do conjunto de itens é de 1 e o máximo do conjunto itens é de 4 que ocorrem na mesma transação, como é o caso da transação 4 (Leite, Café, Pão, Manteiga). Em casos onde é gerado uma grande quantida de regras que possuam um valor de confiança igual ou surperior ao que foi determinado, para saber quais entre elas é a melhor regra, é recomendado que utilize a medida de interesse Lift.}
+\textcolor{red}{Uma observação que tem que ser feita, é que o cálculo do suporte é feito para todos os conjuntos de itens que ocorrem na mesma transação, desde a quantidade mínima de itens até o conjunto da quantidade máxima de itens. No caso, pegando os dados do supermercado utilizado, como é apresentado na figura da tabela mostrado anteriormente, o mínimo do conjunto de itens é de 1 e o máximo do conjunto itens é de 4 que ocorrem na mesma transação, como é o caso da transação 4 (Leite, Café, Pão, Manteiga). Em casos onde é gerado uma grande quantidade de regras que possuam um valor de confiança igual ou superior ao que foi determinado, para saber quais entre elas é a melhor regra, é recomendado que utilize a medida de interesse Lift.}
 
 \par
 \textcolor{red}{Segundo \citeonline{Gonsalves2004}, o lift é uma métrica de avaliação de regras de associação que demonstra para cada regra gerada o grau de relevância dela, podendo assim, fazer uma filtragem das mais relevantes. A fórmula do lift funciona da seguinte forma, como apresentado na \autoref{eq:Lift}:}
