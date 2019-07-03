@@ -353,10 +353,11 @@ Segundo \citeonline{Romao1999}, o algoritmo Apriori possui três processos que �
 
 \subsubsection{J48}
 
-\textcolor{red}{O algoritmo J48 é baseado no algoritmo de árvore de decisão conhecido como C4.5. Ele surgiu da necessidade de recodificar da linguagem C em que foi escrito o algoritmo em que ele se baseou, para a linguagem em Java. O J48 tem como finalidade, formar a árvore mais apropriada sobre um conjunto de dados de treinamento, através das podas das regras que melhoram a sua precisão \cite{Marques2014, Librelotto2014}. Esse algoritmo possibilita a criação de modelos de decisão em árvore, sendo, que cada nó da árvore avalia o nível de relevância de cada atributo individualmente.}
+\par
+O algoritmo J48 é baseado no algoritmo de árvore de decisão conhecido como C4.5. Ele surgiu da necessidade de recodificar da linguagem C em que foi escrito o algoritmo em que ele se baseou, para a linguagem em Java. O J48 tem como finalidade, formar a árvore mais apropriada sobre um conjunto de dados de treinamento, através das podas das regras que melhoram a sua precisão \cite{Marques2014, Librelotto2014}. Esse algoritmo possibilita a criação de modelos de decisão em árvore, sendo, que cada nó da árvore avalia o nível de relevância de cada atributo individualmente.
 
 \par
-\textcolor{red}{Para a construção da árvore de decisão, o algoritmo J48 utiliza a abordagem de dividir-para-conquistar, onde essa técnica consiste em dividir um problema maior recursivamente em subproblemas menores, dividindo o espaço definido pelos atributos em subespaços, associando-se a eles uma classe, até que o problema possa ser resolvido diretamente \cite{Librelotto2014}.}
+Para a construção da árvore de decisão, o algoritmo J48 utiliza a abordagem de dividir-para-conquistar, onde essa técnica consiste em dividir um problema maior recursivamente em subproblemas menores, dividindo o espaço definido pelos atributos em subespaços, associando-se a eles uma classe, até que o problema possa ser resolvido diretamente \cite{Librelotto2014}.
 
 
 %==========================
@@ -368,20 +369,20 @@ Segundo \citeonline{Romao1999}, o algoritmo Apriori possui três processos que �
 \subsection{Entropia e Ganho de Informação}
 
 \par
-\textcolor{red}{Na classificação, o processo da escolha dos atributos mais relevantes para a construção de uma árvore de decisão é feito por dois métodos de seleção: Entropia da informação e Ganho de informação.}
+Na classificação, o processo da escolha dos atributos mais relevantes para a construção de uma árvore de decisão é feito por dois métodos de seleção: Entropia da informação e Ganho de informação.
 
 \par
-\textcolor{red}{A Entropia da Informação é a medida utilizada para indicar a homogeneidade dos exemplos contidos em um conjunto de dados, ou seja, ela calcula a impureza em um determinado subconjunto \cite{Carvalho2014}. Através dessa métrica, é possível diminuir a quantidade de informação necessária para classificar um determinado registro, garantindo assim, que uma árvore simplificada seja obtida. A formula da entropia é demonstrado na \autoref{eq:Entropia}:}
+A Entropia da Informação é a medida utilizada para indicar a homogeneidade dos exemplos contidos em um conjunto de dados, ou seja, ela calcula a impureza em um determinado subconjunto \cite{Carvalho2014}. Através dessa métrica, é possível diminuir a quantidade de informação necessária para classificar um determinado registro, garantindo assim, que uma árvore simplificada seja obtida. A formula da entropia é demonstrado na \autoref{eq:Entropia}:
 
 \begin{equation}
     \label{eq:Entropia}
         {\textit{Entropy(S)}={\sum_{i=1}^{C} -(p_i)\log_{2}(p_i)}}
 \end{equation}
 
-\textcolor{red}{Dado um conjunto de entrada (S) que pode ter \textit{C} classes distintas (número de classes), onde $p_i$ é a proporção de dados em S que pertencem á classe i. O logaritmo de base 2 é utilizado pelo fato que a medida da entropia é em \textit{bits}.}
+Dado um conjunto de entrada (S) que pode ter \textit{C} classes distintas (número de classes), onde $p_i$ é a proporção de dados em S que pertencem á classe i. O logaritmo de base 2 é utilizado pelo fato que a medida da entropia é em \textit{bits}.
 
 \par
-\textcolor{red}{Já o Ganho de Informação é a medida utilizada para determinar o quanto um dado atributo irá particionar (dividir) os exemplos de aprendizado de acordo com sua função objetivo (classes), ou seja, é o ganho de informação obtido ao dividir o conjunto de dados com base no atributo calculado, determinado pela diferença entre a entropia original e a entropia calculada após a divisão (particionamento) do conjunto \cite{Carvalho2014, Steiner2004}. A formula do Ganho de informação é representada na \autoref{eq:Ganho}:}
+Já o Ganho de Informação é a medida utilizada para determinar o quanto um dado atributo irá particionar (dividir) os exemplos de aprendizado de acordo com sua função objetivo (classes), ou seja, é o ganho de informação obtido ao dividir o conjunto de dados com base no atributo calculado, determinado pela diferença entre a entropia original e a entropia calculada após a divisão (particionamento) do conjunto \cite{Carvalho2014, Steiner2004}. A formula do Ganho de informação é representada na \autoref{eq:Ganho}:
 
 \begin{equation}
     \label{eq:Ganho}
@@ -389,11 +390,11 @@ Segundo \citeonline{Romao1999}, o algoritmo Apriori possui três processos que �
 \end{equation}
 
 \par
-\textcolor{red}{A \textit{Entropy(S)} representa a entropia original (classes da variável dependente), no caso, a entropia das classes da variável dependente (Aprovado:Sim ou Não), \textit{Values(A)} representa os conjunto dos valores que A pode assumir, \textit{v} um elemento deste conjunto e $S_v$ o subconjunto de S formado pelos dados em que A=v. Sendo que \textit{Entropy(S)} é uma medida de homogeneidade  dos exemplos contidos em um conjunto de dados (S), \textit{Values(A)} é uma medida de homogeneidade estimada para o
-conjunto S caso utilize o atributo A para fazer a próxima partição.}
+A \textit{Entropy(S)} representa a entropia original (classes da variável dependente), no caso, a entropia das classes da variável dependente (Aprovado:Sim ou Não), \textit{Values(A)} representa os conjunto dos valores que A pode assumir, \textit{v} um elemento deste conjunto e $S_v$ o subconjunto de S formado pelos dados em que A=v. Sendo que \textit{Entropy(S)} é uma medida de homogeneidade  dos exemplos contidos em um conjunto de dados (S), \textit{Values(A)} é uma medida de homogeneidade estimada para o
+conjunto S caso utilize o atributo A para fazer a próxima partição.
 
 \par
-\textcolor{red}{A construção de uma árvore de decisão tem três objetivos, quais sejam: diminuir a entropia (a aleatoriedade da variável objetivo), ser consistente com o conjunto de dados e possuir o menor número de nós \cite{Steiner2004}. Para melhor entendimento dos cálculos acima, será utilizado o exemplo do jogar tênis para ilustrar. Como demonstrado na Tabela 1, os conjuntos de atributos tempo, temperatura, umidade e vento que auxiliam na decisão de jogar tênis (sim ou não).}
+A construção de uma árvore de decisão tem três objetivos, quais sejam: diminuir a entropia (a aleatoriedade da variável objetivo), ser consistente com o conjunto de dados e possuir o menor número de nós \cite{Steiner2004}. Para melhor entendimento dos cálculos acima, será utilizado o exemplo do jogar tênis para ilustrar. Como demonstrado na Tabela 1, os conjuntos de atributos tempo, temperatura, umidade e vento que auxiliam na decisão de jogar tênis (sim ou não).
 
 \par
 \begin{table}[!htp]
@@ -404,12 +405,12 @@ conjunto S caso utilize o atributo A para fazer a próxima partição.}
 \end{table}
 
 \par
-\textcolor{red}{Primeiramente calculamos a entropia original para a variável dependente Joga, em relação as suas duas classes ao total de registros da variável a que elas pertencem, no caso, a classe Sim possui 5 registros e classe Não possui 9 registros dentre os 14 registros no total, como demonstrado o cálculo abaixo:}
+Primeiramente calculamos a entropia original para a variável dependente Joga, em relação as suas duas classes ao total de registros da variável a que elas pertencem, no caso, a classe Sim possui 5 registros e classe Não possui 9 registros dentre os 14 registros no total, como demonstrado o cálculo abaixo:
 
 \textit{Entropy(Joga)}={ - ($\frac{5}{14}$)$\log_{2}$($\frac{5}{14}$) - ($\frac{9}{14}$)$\log_{2}$($\frac{9}{14}$) = 0,16 + 0,12 = 0,28.}
 
 \par
-\textcolor{red}{Em seguida, calculamos a entropia das classes pertencente a variável Joga em relação a quantidade de vezes que cada uma das classes do atributo Tempo aparecem. No caso, o valor Sol possui 5 registros contendo 2 registros com a classe Sim e 3 registros com a classe Não, o valor Nublado possui 4 registros contendo os 4 registros somente para a classe Sim e o valor Chuva possui 5 registros contendo 3 registros para a classe Sim e 2 registros para a classe Não. Como demonstrado o cálculo abaixo:}
+Em seguida, calculamos a entropia das classes pertencente a variável Joga em relação a quantidade de vezes que cada uma das classes do atributo Tempo aparecem. No caso, o valor Sol possui 5 registros contendo 2 registros com a classe Sim e 3 registros com a classe Não, o valor Nublado possui 4 registros contendo os 4 registros somente para a classe Sim e o valor Chuva possui 5 registros contendo 3 registros para a classe Sim e 2 registros para a classe Não. Como demonstrado o cálculo abaixo:
 
 \textit{Entropy(Joga,Sol)}={ - ($\frac{2}{5}$)$\log_{2}(\frac{2}{5})$ - ($\frac{3}{5}$)$\log_{2}(\frac{3}{5})$ = 0,16 + 0,13 = 0,29}
 
@@ -418,11 +419,12 @@ conjunto S caso utilize o atributo A para fazer a próxima partição.}
 \textit{Entropy(Joga,Chuva)}={ - ($\frac{3}{5}$)$\log_{2}$($\frac{3}{5}$) - ($\frac{2}{5}$)$\log_{2}$($\frac{2}{5}$) = 0,13 + 0,16 = 0,29} 
 
 \par
-\textcolor{red}{Depois de fazer o cálculo da entropia para cada valor da variável Tempo, aplicamos os resultados deles ao cálculo de ganho de informação, onde o valor da entropia original é subtraído pela soma da quantidade de vezes em que o valor do registro apareceu dividido pelo total de registros da sua variável pertencente sendo multiplicado pela sua respectiva entropia. No caso, a variável tempo possui 14 registro no total, contendo 5 registros para o valor Sol possuindo o valor de entropia de 0,29 em relação as classes da variável Joga, 4 registros para o valor Nublado com o valor de entropia de 0 e 5 registros para o valor Chuva com o valor de entropia de 0,29, como demonstrado logo abaixo:}
+Depois de fazer o cálculo da entropia para cada valor da variável Tempo, aplicamos os resultados deles ao cálculo de ganho de informação, onde o valor da entropia original é subtraído pela soma da quantidade de vezes em que o valor do registro apareceu dividido pelo total de registros da sua variável pertencente sendo multiplicado pela sua respectiva entropia. No caso, a variável tempo possui 14 registro no total, contendo 5 registros para o valor Sol possuindo o valor de entropia de 0,29 em relação as classes da variável Joga, 4 registros para o valor Nublado com o valor de entropia de 0 e 5 registros para o valor Chuva com o valor de entropia de 0,29, como demonstrado logo abaixo:
 
 \textit{Gain(Joga,Tempo)}={ 0,28 - ($\frac{5}{14}$).0,29 - ($\frac{4}{14}$).0 - ($\frac{5}{14}$).0,29 = 0,28 - 0,1 - 0 - 0,1 = 0,08} 
+
 \par
-\textcolor{red}{Para o melhor entendimento, a Figura 12 apresenta os passos do que foi feito:}
+Para o melhor entendimento, a Figura 12 apresenta os passos do que foi feito:
 
 \begin{figure}[!htp]
 	\begin{center}
@@ -433,10 +435,10 @@ conjunto S caso utilize o atributo A para fazer a próxima partição.}
 \end{figure}
 
 \par
-\textcolor{red}{Fazendo o mesmo cálculo para os outros atributos a taxa de ganho obtido foi: 0,02 para temperatura, 0,01 para umidade e 0,02 para vento. Analisando com o resultado que já foi obtido do ganho de informação do atributo Tempo (0,08), percebemos que o atributo Tempo possui a taxa de ganho mais alta, logo, se for utilizado somente o atributo Tempo, terá uma alta probabilidade de se obter uma classificação mais interessante para a árvore. Logo, o atributo Tempo vai estar na raiz da árvore de decisão.}
+Fazendo o mesmo cálculo para os outros atributos a taxa de ganho obtido foi: 0,02 para temperatura, 0,01 para umidade e 0,02 para vento. Analisando com o resultado que já foi obtido do ganho de informação do atributo Tempo (0,08), percebemos que o atributo Tempo possui a taxa de ganho mais alta, logo, se for utilizado somente o atributo Tempo, terá uma alta probabilidade de se obter uma classificação mais interessante para a árvore. Logo, o atributo Tempo vai estar na raiz da árvore de decisão.
 
 \par
-\textcolor{red}{A partir da raiz da variável Tempo, dependendo do ramo que for percorrido, o cálculo de entropia e ganho de informação é aplicado para aquele caminho e sucessivamente para todos os ramos até gerar a arvore toda, sendo que esse cálculo será feito somente para aqueles atributos que ainda não foram selecionados anteriormente. Por exemplo, o valor (ramo) Sol possui 5 atributos, o cálculo do ganho de informação dos outros atributos em relação a variável dependente joga, vai estar sendo limitado por 5 registros apenas, o cálculo será feito para todos os atributos com exceção do atributo tempo, como demonstrado na Tabela 2:}
+A partir da raiz da variável Tempo, dependendo do ramo que for percorrido, o cálculo de entropia e ganho de informação é aplicado para aquele caminho e sucessivamente para todos os ramos até gerar a arvore toda, sendo que esse cálculo será feito somente para aqueles atributos que ainda não foram selecionados anteriormente. Por exemplo, o valor (ramo) Sol possui 5 atributos, o cálculo do ganho de informação dos outros atributos em relação a variável dependente joga, vai estar sendo limitado por 5 registros apenas, o cálculo será feito para todos os atributos com exceção do atributo tempo, como demonstrado na Tabela 2:
 
 \par
 \begin{table}[!htp]
@@ -449,9 +451,9 @@ conjunto S caso utilize o atributo A para fazer a próxima partição.}
 \subsubsection{Razão do Ganho de Informação}
 
 \par
-\textcolor{red}{Apesar de ser uma métrica eficiente, o ganho de informação possui um problema: este tipo de cálculo favorece os atributos que possuem uma grande quantidade de valores (arestas), fazendo com que gere árvores muitos largas, que não são desejáveis \cite{Garcia2003}. Para contornar essa situação, o algoritmo J48 utiliza uma extensão do ganho de informação, conhecida como razão de ganho. Esta extensão inclui um novo termo, que penaliza atributos que possuam muitos valores \cite{Carvalho2014}.}
+Apesar de ser uma métrica eficiente, o ganho de informação possui um problema: este tipo de cálculo favorece os atributos que possuem uma grande quantidade de valores (arestas), fazendo com que gere árvores muitos largas, que não são desejáveis \cite{Garcia2003}. Para contornar essa situação, o algoritmo J48 utiliza uma extensão do ganho de informação, conhecida como razão de ganho. Esta extensão inclui um novo termo, que penaliza atributos que possuam muitos valores \cite{Carvalho2014}.
 
-\textcolor{red}{Este novo termo, chamado de Divisão de Informação, não é mais que a entropia da informação do atributo de A em relação ao conjunto de dados de S, como definido pela \autoref{eq:Info}:}
+Este novo termo, chamado de Divisão de Informação, não é mais que a entropia da informação do atributo de A em relação ao conjunto de dados de S, como definido pela \autoref{eq:Info}:
 
 \begin{equation}
     \label{eq:Info}
@@ -459,7 +461,7 @@ conjunto S caso utilize o atributo A para fazer a próxima partição.}
 \end{equation}
 
 \par
-\textcolor{red}{Onde, $S_v$ é o subconjunto de exemplos resultante do particionamento de S pelos \textit{n} valores do atributo A. Com base nisso, a Razão do Ganho é dada pela divisão do ganho de informação sobre a divisão de informação \autoref{eq:Razao}:}
+Onde, $S_v$ é o subconjunto de exemplos resultante do particionamento de S pelos \textit{n} valores do atributo A. Com base nisso, a Razão do Ganho é dada pela divisão do ganho de informação sobre a divisão de informação \autoref{eq:Razao}:
 
 \begin{equation}
     \label{eq:Razao}
@@ -468,28 +470,29 @@ conjunto S caso utilize o atributo A para fazer a próxima partição.}
 
 
 \par
-\textcolor{red}{Vamos pegar como exemplo a base de treinamento jogar tênis para realizar o cálculo de razão do ganho de informação. Começando com o cálculo de divisão de informação para o atributo Tempo em relação ao conjunto de dados Joga, temos:}
+Vamos pegar como exemplo a base de treinamento jogar tênis para realizar o cálculo de razão do ganho de informação. Começando com o cálculo de divisão de informação para o atributo Tempo em relação ao conjunto de dados Joga, temos:
 
 \textit{DivInfo(Joga,Tempo)}={ - ($\frac{5}{14}$)$\log_{2}(\frac{5}{14})$ - ($\frac{4}{14}$)$\log_{2}(\frac{4}{14})$ - ($\frac{5}{14}$)$\log_{2}(\frac{5}{14})$ = 0,16 + 0,15 + 0,16} 
 
 = 0,47
 
 \par
-\textcolor{red}{Utilizando o ganho de informação que foi obtido para o atributo Tempo em relação ao atributo Joga, o resultado da razão do ganho de informação, obtido para este atributo é:}
+Utilizando o ganho de informação que foi obtido para o atributo Tempo em relação ao atributo Joga, o resultado da razão do ganho de informação, obtido para este atributo é:
 
 \textit{GainRatio(Joga,Tempo)}={ ($\frac{0,08}{0,47}$) = 0,17} 
 
 \par
-\textcolor{red}{Em casos de razão de ganho com resultados muito alto, por conta do denominador receber valores muito próximos de zero, quando grande parte das instancias possuem o mesmo valor em um atributo, o algoritmo J48 para contornar essa situação, aplica o cálculo da razão de ganho, somente quando o valor obtido pelo Ganho de Informação é maior que a média dos Ganhos de todos os outros atributos \cite{Carvalho2014}.}
+Em casos de razão de ganho com resultados muito alto, por conta do denominador receber valores muito próximos de zero, quando grande parte das instancias possuem o mesmo valor em um atributo, o algoritmo J48 para contornar essa situação, aplica o cálculo da razão de ganho, somente quando o valor obtido pelo Ganho de Informação é maior que a média dos Ganhos de todos os outros atributos \cite{Carvalho2014}.
 
 
 
 \subsection{Suporte, Confiança e Lift}
 
 \par
-\textcolor{red}{Na associação, o método para se encontrar as regras para ela pode ser dividido em duas partes. A primeira é a de descobrir todos os \textit{itemset} (conjunto de itens) que possuam um suporte com transações igual ou superior ao limite mínimo que foi especificado, onde os itens encontrados são conhecidos como o conjunto de itens frequentes, e a segunda parte é a de gerar as regras de associação a partir dos \textit{itemset} frequentes encontrados, no qual, serão selecionado apenas as regras que possuam um grau de confiança mínima especificado pelo usuário \cite{Vasconcelos2004, LeandroSilva2014}.}
+Na associação, o método para se encontrar as regras para ela pode ser dividido em duas partes. A primeira é a de descobrir todos os \textit{itemset} (conjunto de itens) que possuam um suporte com transações igual ou superior ao limite mínimo que foi especificado, onde os itens encontrados são conhecidos como o conjunto de itens frequentes, e a segunda parte é a de gerar as regras de associação a partir dos \textit{itemset} frequentes encontrados, no qual, serão selecionado apenas as regras que possuam um grau de confiança mínima especificado pelo usuário \cite{Vasconcelos2004, LeandroSilva2014}.
 
-\textcolor{red}{Praticamente, dado um conjunto de transações, o objetivo em minerar por regras de associação é a de encontrar todas as regras que possuam o suporte e a confiança iguais ou superiores ao valores mínimo especificado pelo usuário \cite{Vasconcelos2004}. O suporte de uma regra X $\rightarrow$ Y, onde X e Y são  \textit{itemset}, é dada pela seguinte fórmula apresentada na \autoref{eq:Suporte}:}
+\par
+Praticamente, dado um conjunto de transações, o objetivo em minerar por regras de associação é a de encontrar todas as regras que possuam o suporte e a confiança iguais ou superiores ao valores mínimo especificado pelo usuário \cite{Vasconcelos2004}. O suporte de uma regra X $\rightarrow$ Y, onde X e Y são  \textit{itemset}, é dada pela seguinte fórmula apresentada na \autoref{eq:Suporte}:
 
 
 \begin{equation}
@@ -498,7 +501,7 @@ conjunto S caso utilize o atributo A para fazer a próxima partição.}
 \end{equation}
 
 \par
-\textcolor{red}{A fórmula pode ser interpretada da seguinte maneira, o numerador representa a quantidade de transações que ocorrem simultaneamente tanto para X quanto para Y e o denominador representa o total de transações a qual aquele conjunto pertence. Já para a confiança, é dada pela seguinte fórmula que é demonstrada na \autoref{eq:Confianca}:}
+A fórmula pode ser interpretada da seguinte maneira, o numerador representa a quantidade de transações que ocorrem simultaneamente tanto para X quanto para Y e o denominador representa o total de transações a qual aquele conjunto pertence. Já para a confiança, é dada pela seguinte fórmula que é demonstrada na \autoref{eq:Confianca}:
 
 \begin{equation}
     \label{eq:Confianca}
@@ -506,10 +509,10 @@ conjunto S caso utilize o atributo A para fazer a próxima partição.}
 \end{equation}
 
 \par
-\textcolor{red}{Na fórmula acima, o numerador representa a quantidade de transações em que X e Y ocorrem simultaneamente e o denominador representa a quantidade de transações que o item X ocorre. No caso, o suporte (\autoref{eq:Suporte}) pode ser retratado como a probabilidade em que uma transação qualquer satisfaça tanto X quanto Y e na confiança (\autoref{eq:Confianca}) é a probabilidade que uma transação qualquer satisfaça Y, dado que ela ocorra em X.}
+Na fórmula acima, o numerador representa a quantidade de transações em que X e Y ocorrem simultaneamente e o denominador representa a quantidade de transações que o item X ocorre. No caso, o suporte (\autoref{eq:Suporte}) pode ser retratado como a probabilidade em que uma transação qualquer satisfaça tanto X quanto Y e na confiança (\autoref{eq:Confianca}) é a probabilidade que uma transação qualquer satisfaça Y, dado que ela ocorra em X.
 
 \par
-\textcolor{red}{Para entender melhor esse processo, vamos pegar o exemplo que \citeonline{Vasconcelos2004} demonstraram. Conforme a Figura 13, que demonstra uma tabela referente a base de dados de um supermercado, as colunas correspondem aos itens e as linhas correspondem as transações, os valores 0 e 1 representam a presença daquele item na transação correspondente, no caso, 0 refere-se a ausência do item e 1 refere-se a presença do item. O suporte mínimo especifica para o exemplo e de 30\% (0.3) e a confiança mínima é de 80\% (0.8).}
+Para entender melhor esse processo, vamos pegar o exemplo que \citeonline{Vasconcelos2004} demonstraram. Conforme a Figura 13, que demonstra uma tabela referente a base de dados de um supermercado, as colunas correspondem aos itens e as linhas correspondem as transações, os valores 0 e 1 representam a presença daquele item na transação correspondente, no caso, 0 refere-se a ausência do item e 1 refere-se a presença do item. O suporte mínimo especifica para o exemplo e de 30\% (0.3) e a confiança mínima é de 80\% (0.8).
 
 
 \begin{figure}[!htp]
@@ -520,17 +523,17 @@ conjunto S caso utilize o atributo A para fazer a próxima partição.}
     \legend{Fonte:\cite{Vasconcelos2004}}
 \end{figure}
 
-
-\textcolor{red}{Os autores \citeonline{Vasconcelos2004} consideraram X = {Café} e Y = {Pão} e calcularam o suporte e a confiança para o conjunto {Café, Pão}. Ao verificarem na tabela, eles observaram que em apenas 3 transações (transação 1, 3 e 4) os dois itens aparecem com o valor 1 simultaneamente. Desa forma, pegando a fórmula do suporte que é apresentado na \autoref{eq:Suporte}, o numerador recebe o valor 3 (que foi a quantidade das transações em que os dois itens ocorreram ao mesmo tempo) e o denominador recebe o valor 10 (que é o numero total de transações ocorridas). Logo obtiveram, Suporte = 3/10 = 0.3 (30\%).}
+\par
+Os autores \citeonline{Vasconcelos2004} consideraram X = {Café} e Y = {Pão} e calcularam o suporte e a confiança para o conjunto {Café, Pão}. Ao verificarem na tabela, eles observaram que em apenas 3 transações (transação 1, 3 e 4) os dois itens aparecem com o valor 1 simultaneamente. Desa forma, pegando a fórmula do suporte que é apresentado na \autoref{eq:Suporte}, o numerador recebe o valor 3 (que foi a quantidade das transações em que os dois itens ocorreram ao mesmo tempo) e o denominador recebe o valor 10 (que é o numero total de transações ocorridas). Logo obtiveram, Suporte = 3/10 = 0.3 (30\%).
 
 \par
-\textcolor{red}{Para a confiança, \citeonline{Vasconcelos2004} pegaram os mesmos itens (Café, Pão) que foram comprovados que eles possuem um suporte igual ou superior que 30\%, o calculo foi feito da seguinte forma: o numerador recebeu o mesmo valor que foi obtido no numerador da equação do suporte que é 3 e o denominador recebeu a quantidade de transações que os itens de X possuem como valor 1 em relação a transação total (10 transações), logo ele recebe o valor como 3. Portanto, Confiança = 3/3 = 1 (100\%). Logo, a regra gerada Café $\rightarrow$ Pão (se o cliente compra café, então ele compra pão) ocorre com 100\% das transações (compras efetuadas).}
+Para a confiança, \citeonline{Vasconcelos2004} pegaram os mesmos itens (Café, Pão) que foram comprovados que eles possuem um suporte igual ou superior que 30\%, o calculo foi feito da seguinte forma: o numerador recebeu o mesmo valor que foi obtido no numerador da equação do suporte que é 3 e o denominador recebeu a quantidade de transações que os itens de X possuem como valor 1 em relação a transação total (10 transações), logo ele recebe o valor como 3. Portanto, Confiança = 3/3 = 1 (100\%). Logo, a regra gerada Café $\rightarrow$ Pão (se o cliente compra café, então ele compra pão) ocorre com 100\% das transações (compras efetuadas).
 
 \par
-\textcolor{red}{Uma observação que tem que ser feita, é que o cálculo do suporte é feito para todos os conjuntos de itens que ocorrem na mesma transação, desde a quantidade mínima de itens até o conjunto da quantidade máxima de itens. No caso, pegando os dados do supermercado utilizado, como é apresentado na figura da tabela mostrado anteriormente, o mínimo do conjunto de itens é de 1 e o máximo do conjunto itens é de 4 que ocorrem na mesma transação, como é o caso da transação 4 (Leite, Café, Pão, Manteiga). Em casos onde é gerado uma grande quantidade de regras que possuam um valor de confiança igual ou superior ao que foi determinado, para saber quais entre elas é a melhor regra, é recomendado que utilize a medida de interesse Lift.}
+Uma observação que tem que ser feita, é que o cálculo do suporte é feito para todos os conjuntos de itens que ocorrem na mesma transação, desde a quantidade mínima de itens até o conjunto da quantidade máxima de itens. No caso, pegando os dados do supermercado utilizado, como é apresentado na figura da tabela mostrado anteriormente, o mínimo do conjunto de itens é de 1 e o máximo do conjunto itens é de 4 que ocorrem na mesma transação, como é o caso da transação 4 (Leite, Café, Pão, Manteiga). Em casos onde é gerado uma grande quantidade de regras que possuam um valor de confiança igual ou superior ao que foi determinado, para saber quais entre elas é a melhor regra, é recomendado que utilize a medida de interesse Lift.
 
 \par
-\textcolor{red}{Segundo \citeonline{Gonsalves2004}, o lift é uma métrica de avaliação de regras de associação que demonstra para cada regra gerada o grau de relevância dela, podendo assim, fazer uma filtragem das mais relevantes. A fórmula do lift funciona da seguinte forma, como apresentado na \autoref{eq:Lift}:}
+Segundo \citeonline{Gonsalves2004}, o lift é uma métrica de avaliação de regras de associação que demonstra para cada regra gerada o grau de relevância dela, podendo assim, fazer uma filtragem das mais relevantes. A fórmula do lift funciona da seguinte forma, como apresentado na \autoref{eq:Lift}:
 
 \begin{equation}
     \label{eq:Lift}
@@ -538,7 +541,7 @@ conjunto S caso utilize o atributo A para fazer a próxima partição.}
 \end{equation}
 
 \par
-\textcolor{red}{O numerador representa o valor de confiança da regra que foi obtida X $\rightarrow$ Y e o denominador representa o valor de suporte obtido de Y. No caso, o lift pode ser tratado como o qual mais frequente se torna Y quando X $\rightarrow$ Y ocorre \cite{Gonsalves2004}. Para esclarecer melhor, ainda com o exemplo dosupermercado, determinamos um lift maior ou igual a 2, pegando pelo menos 3 regras que passaram de 80\% de confiança: Café $\rightarrow$ Pão com 100\%, Café $\rightarrow$ Manteiga com 100\% e Pão $\rightarrow$ Manteiga com 80\%. E pegando tambem os suporte de pão e manteiga com 50\%. Logo, temos o seguinte:}
+O numerador representa o valor de confiança da regra que foi obtida X $\rightarrow$ Y e o denominador representa o valor de suporte obtido de Y. No caso, o lift pode ser tratado como o qual mais frequente se torna Y quando X $\rightarrow$ Y ocorre \cite{Gonsalves2004}. Para esclarecer melhor, ainda com o exemplo dosupermercado, determinamos um lift maior ou igual a 2, pegando pelo menos 3 regras que passaram de 80\% de confiança: Café $\rightarrow$ Pão com 100\%, Café $\rightarrow$ Manteiga com 100\% e Pão $\rightarrow$ Manteiga com 80\%. E pegando tambem os suporte de pão e manteiga com 50\%. Logo, temos o seguinte:
 
 \textit{Lift (Café $\rightarrow$ Pão)} = \textit{Confiança (Café $\rightarrow$ Pão)} /  \textit{Suporte (Pão)} = 1 / 0,5 = 2
     
@@ -558,25 +561,25 @@ conjunto S caso utilize o atributo A para fazer a próxima partição.}
 \section{Validação do Modelo}
 
 \par
-\textcolor{red}{Na implementação ou utilização de um algoritmo, é essencial verificar a sua precisão (acurácia) em um conjunto de teste. Por exemplo, em classificação, no caso da árvore de decisão que são propenso ao problema denominado como \textit{overfitting}, onde, a árvore gerada não consegue generalizar corretamente novas instâncias de testes, possuindo uma capacidade de predição muito abaixo da precisão desejada ao se utilizar o conjunto de teste de dados de treinamento \cite{Carvalho2014}. Para evitar este tipo de problema, avaliando a estimativa de erro obtida pela árvore, pode se utilizar algumas técnicas como: \textit{cross-validation} e matriz de confusão.}
+Na implementação ou utilização de um algoritmo, é essencial verificar a sua precisão (acurácia) em um conjunto de teste. Por exemplo, em classificação, no caso da árvore de decisão que são propenso ao problema denominado como \textit{overfitting}, onde, a árvore gerada não consegue generalizar corretamente novas instâncias de testes, possuindo uma capacidade de predição muito abaixo da precisão desejada ao se utilizar o conjunto de teste de dados de treinamento \cite{Carvalho2014}. Para evitar este tipo de problema, avaliando a estimativa de erro obtida pela árvore, pode se utilizar algumas técnicas como: \textit{cross-validation} e matriz de confusão.
 
 
 
 \subsection{Cross-Validation}
 
 \par
-\textcolor{red}{A validação cruzada é uma técnica que avalia a eficiência de generalização de um modelo a partir de um conjunto de dados, ou seja, ela analisa se o conjunto de dados de treinamento é representado o bastante em relação à base de dados na qual se deseja predizer certas instâncias \cite{Carvalho2014, Monard2003}.}
+A validação cruzada é uma técnica que avalia a eficiência de generalização de um modelo a partir de um conjunto de dados, ou seja, ela analisa se o conjunto de dados de treinamento é representado o bastante em relação à base de dados na qual se deseja predizer certas instâncias \cite{Carvalho2014, Monard2003}.
 
 \par
-\textcolor{red}{O método mais comum de ser utilizado é o K-partições, onde, por exemplo utilizando k = 10 \textit{folds}, ele pega uma base inteira e a divide em 10 partições com a mesma quantidade de instâncias (aqueles que não são divisível pelo valor definido, o restante que sobra são distribuídas pelas partições), sendo que em 10 interações, para cada partição será o conjunto de teste enquanto as 9 restantes serão utilizadas como conjunto de caso de treinamento \cite{Carvalho2014}.}
+O método mais comum de ser utilizado é o K-partições, onde, por exemplo utilizando k = 10 \textit{folds}, ele pega uma base inteira e a divide em 10 partições com a mesma quantidade de instâncias (aqueles que não são divisível pelo valor definido, o restante que sobra são distribuídas pelas partições), sendo que em 10 interações, para cada partição será o conjunto de teste enquanto as 9 restantes serão utilizadas como conjunto de caso de treinamento \cite{Carvalho2014}.
 
 \par
-\textcolor{red}{A cada interação realizada, é calculada a estimativa de erro do modelo (que é a quantidade de vezes em que foi classificado incorretamente no conjunto de casos de teste), onde, será somada cada estimativa de erro obtida em cada interação e dividida por 10, para obter a estimativa total do erro do modelo \cite{Carvalho2014}.}
+A cada interação realizada, é calculada a estimativa de erro do modelo (que é a quantidade de vezes em que foi classificado incorretamente no conjunto de casos de teste), onde, será somada cada estimativa de erro obtida em cada interação e dividida por 10, para obter a estimativa total do erro do modelo \cite{Carvalho2014}.
 
 \subsection{Matriz de Confusão}
 
 \par
-\textcolor{red}{Diferentemente da validação cruzada que só avalia a quantidade de instâncias que foram classificadas incorretamente, a matriz de confusão fornece uma estimativa mais detalhada, em comparação à classificação incorreta das classes \cite{Carvalho2014}. Segundo \citeonline{Monard2003}, a matriz mostra a quantidade de classificação correta versus as classificações preditas para cada uma das classes, sobre um conjunto de exemplo. Para entender o funcionamento dessa técnica, usaremos o exemplo da  tabela utilizada por \citeonline{Carvalho2014}, como demonstrado na Figura 14:}
+Diferentemente da validação cruzada que só avalia a quantidade de instâncias que foram classificadas incorretamente, a matriz de confusão fornece uma estimativa mais detalhada, em comparação à classificação incorreta das classes \cite{Carvalho2014}. Segundo \citeonline{Monard2003}, a matriz mostra a quantidade de classificação correta versus as classificações preditas para cada uma das classes, sobre um conjunto de exemplo. Para entender o funcionamento dessa técnica, usaremos o exemplo da  tabela utilizada por \citeonline{Carvalho2014}, como demonstrado na Figura 14:
 
 \par
 \begin{figure}[!htp]
@@ -588,18 +591,18 @@ conjunto S caso utilize o atributo A para fazer a próxima partição.}
 \end{figure}
 
 \par
-\textcolor{red}{Segundo \citeonline{Carvalho2014}, a  matriz de confusão funciona da seguinte forma, a tabela acima possui um tamanho 2x2 contendo 2 classes-alvo, onde, ela pode ter 4 valores possíveis que é: a quantidade de instâncias classificadas corretamente para a classe X (Verdadeiros Positivo), a quantidade de instancias da classe X que foram classificadas incorretamente na classe Y (Falso Positivo), a quantidade de instancias da classe Y que foram classificadas corretamente (Verdadeiro Negativo) e a quantidade de instancias da classe Y que foram classificadas incorretamente na classe X (Falso Negativo).}
+Segundo \citeonline{Carvalho2014}, a  matriz de confusão funciona da seguinte forma, a tabela acima possui um tamanho 2x2 contendo 2 classes-alvo, onde, ela pode ter 4 valores possíveis que é: a quantidade de instâncias classificadas corretamente para a classe X (Verdadeiros Positivo), a quantidade de instancias da classe X que foram classificadas incorretamente na classe Y (Falso Positivo), a quantidade de instancias da classe Y que foram classificadas corretamente (Verdadeiro Negativo) e a quantidade de instancias da classe Y que foram classificadas incorretamente na classe X (Falso Negativo).
 
 \par
-\textcolor{red}{Podemos notar que a matriz de confusão é uma ótima ferramenta para verificar a acurácia do algoritmo, fornecendo maiores informações da estimativa de erro obtida pela validação cruzada.}
+Podemos notar que a matriz de confusão é uma ótima ferramenta para verificar a acurácia do algoritmo, fornecendo maiores informações da estimativa de erro obtida pela validação cruzada.
 
-\subsection{A Curva de Receiver Operating Characteristic (ROC)}
-
-\par
-\textcolor{red}{Com base nos resultados obtidos da matriz de confusão na execução do modelo, diversas métricas podem ser usadas para avaliar o desempenho do modelo. A duas que são consideradas como mais importantes para a análise são: a sensibilidade é a capacidade do modelo em predizer corretamente a condição para casos que realmente têm e a especificidade, que é a capacidade do modelo em predizer corretamente a ausência da condição para casos que realmente não têm (predizer corretamente que determinada classe NÃO pertence a determinada classe)\cite{Cesar, Carvalho2014}.}
+\subsection{A Curva Receiver Operating Characteristic (ROC)}
 
 \par
-\textcolor{red}{Segundo \citeonline{Carvalho2014}, essas duas métricas támbem são chamadas de Taxa de Verdadeiro Positivo (TVP) e Taxa de Verdadeiro Negativo (TVN), sendo que, as duas métricas são complementares entre si. Além da matriz de confusão, a análise dos resultados do modelo será feita por meio do gráfico conhecido como curva de ROC. A figura 15, demonstra um exemplo de curva ROC:}
+Com base nos resultados obtidos da matriz de confusão na execução do modelo, diversas métricas podem ser usadas para avaliar o desempenho do modelo. A duas que são consideradas como mais importantes para a análise são: a sensibilidade é a capacidade do modelo em predizer corretamente a condição para casos que realmente têm e a especificidade, que é a capacidade do modelo em predizer corretamente a ausência da condição para casos que realmente não têm (predizer corretamente que determinada classe NÃO pertence a determinada classe)\cite{Cesar, Carvalho2014}.
+
+\par
+Segundo \citeonline{Carvalho2014}, essas duas métricas támbem são chamadas de Taxa de Verdadeiro Positivo (TVP) e Taxa de Verdadeiro Negativo (TVN), sendo que, as duas métricas são complementares entre si. Além da matriz de confusão, a análise dos resultados do modelo será feita por meio do gráfico conhecido como curva ROC. A figura 15, demonstra um exemplo de curva ROC:
 
 \par
 \begin{figure}[!htp]
@@ -611,10 +614,10 @@ conjunto S caso utilize o atributo A para fazer a próxima partição.}
 \end{figure}
 
 \par
-\textcolor{red}{O gráfico da curva ROC nada mais é que uma representação por linhas (plotagem) de duas métricas calculadas com base na matriz de confusão: Taxa de verdadeiros Positivos e a inversa de Taxa Verdadeiros Negativos, a Taxa de Falsos Positivos (FTP). Cada registro se tornar um ponto no gráfico, tendo o seu desempenho avaliado através da sua proximidade com o canto superior esquerdo do gráfico, no caso, o modelo apresentado acima classifica todos os seus registros corretamente, sem os Falsos Positivos ou Falsos Negativos (TVP = 1.0 E TFP = 0.0) \cite{Cesar, Carvalho2014}.}
+O gráfico da curva ROC nada mais é que uma representação por linhas (plotagem) de duas métricas calculadas com base na matriz de confusão: Taxa de verdadeiros Positivos e a inversa de Taxa Verdadeiros Negativos, a Taxa de Falsos Positivos (FTP). Cada registro se tornar um ponto no gráfico, tendo o seu desempenho avaliado através da sua proximidade com o canto superior esquerdo do gráfico, no caso, o modelo apresentado acima classifica todos os seus registros corretamente, sem os Falsos Positivos ou Falsos Negativos (TVP = 1.0 E TFP = 0.0) \cite{Cesar, Carvalho2014}.
 
 \par
-\textcolor{red}{O gráfico apresentado, possui uma linha que o corta em diagonal, representados a chance de uma classificação aleatória, os registros que são classificados acima dessa linha são considerados bons ou moderados e os registros que se encontram abaixo da linha, são descartados \cite{Carvalho2014}.}
+O gráfico apresentado, possui uma linha que o corta em diagonal, representados a chance de uma classificação aleatória, os registros que são classificados acima dessa linha são considerados bons ou moderados e os registros que se encontram abaixo da linha, são descartados \cite{Carvalho2014}.
 
 
 %==========================
