@@ -12,7 +12,7 @@ No fim, foi obtido através da CPV, somente a base de dados do questionário, co
 \section{Transformação da Base de Dados}
 
 \par
-Os dados mencionados anteriormente, foram fornecidos no formato .xlsx do Excel com uma tabela contendo três colunas de informações, o ID do candidato, a resposta do questionário e o número do questionário atribuído a resposta, como demonstrado na Figura 19. De 37 questões, somente 33 foram ser fornecidas, pois, quatro delas tinham como respostas dissertativas (que são armazenadas com as outras também, mas como não apresentavam um padrão por serem campos abertos, consequentemente, se apresentavam dados incoerentes para os algoritmos) e apenas as 33 tinham como resposta opções já fornecidas pelo próprio sistema que eram armazenadas no banco de dados e que puderam ser disponibilizado.
+Os dados mencionados anteriormente, foram fornecidos no formato .xlsx do Excel com uma tabela contendo três colunas de informações, o ID do candidato, a resposta do questionário e o número do questionário atribuído a resposta, como demonstrado na Figura 19. De 37 questões, somente 33 foram fornecidas, pois, quatro delas tinham como respostas dissertativas (que são armazenadas com as outras também, mas como não apresentavam um padrão por serem campos abertos, consequentemente, se apresentavam dados incoerentes para os algoritmos) e apenas as 33 tinham como resposta opções já fornecidas pelo próprio sistema que eram armazenadas no banco de dados e que puderam ser disponibilizados.
 
 \par
 Para se começar com a utilização desses dados, foi necessário transformar toda a tabela para um formato apropriado a fim de que os aplicativos do software WEKA os suporte. De início foi feito colunas para cada número do questionário através das funções de filtro e concatenação fornecida pelo Excel, e as linhas abaixo delas seriam as respostas de cada candidato para aquela coluna especifica, como demonstrado na Figura 22. A coluna de ID foi removida já que não era necessário para a mineração, entretanto, ela foi necessária na geração de uma nova coluna rotulada de Aprovado que foi obtida através de duas tabelas contendo informações dos candidatos geral e dos candidatos aprovados.
@@ -45,13 +45,13 @@ O motivo dessa formatação demonstrada na Figura 23, se dá pelo fato de que o 
 Também foi necessário se fazer algumas alterações nas informações de dentro da tabela para que depois da conversão não viesse a ocorrer algum erro nos dados. Alterações essas como a remoção de acentos identificados nas informações da tabela, pois, os arquivos no WEKA segundo \citeonline{Amaral2016}, se encontram no formato ASCII que não suportam caracteres acentuados, outra alteração realizada foi transformar números para texto, pois, o tipo de dado em cada coluna só pode ser \textit{numeric nominal}, \textit{string} ou \textit{date}, e por fim, a última alteração foi a remoção de vírgulas encontradas nos dados, pois, para converter um arquivo csv no formato arff, o WEKA identifica as virgulas como as colunas que separam os dados.
 
 \par
-A última alteração que precisou ser feita foi da transformação dos ponto e vírgula para somente virgula, pois, o Excel ao transformar um arquivo em xlsx para csv, ele faz com a separação da coluna seja feita por ponto e vírgula o que acaba ocasionando erros e inconsistência nos dados quando o arquivo é convertido do csv para o arff, pois, o WEKA considera o caractere virgula como a representação das colunas que separam os dados. Após ter feito todos esses processos que foram mencionados anteriormente, a conversão do arquivo foi um sucesso, não tendo sido encontrado nenhum problema e inconsistência nos dados que possam ocasionar erro durante o processo de mineração.
+A última alteração que precisou ser feita foi da transformação dos ponto e vírgula para somente virgula, pois, o Excel ao transformar um arquivo em xlsx para csv, ele faz com a separação da coluna seja feita por ponto e vírgula o que acaba ocasionando erros e inconsistência nos dados quando o arquivo é convertido do csv para o arff, pois, o WEKA considera o caractere virgula como a representação das colunas que separam os dados. Após ter feito todos esses processos que foram mencionados anteriormente, foi feita conversão do arquivo, não tendo sido encontrado nenhum problema e inconsistência nos dados que possam ocasionar erro durante o processo de mineração.
 
 
 \section{Arquivo ARFF}
 
 \par
-Após o processo de conversão, internamente, o arquivo arff possui duas seções principais: um cabeçalho e uma área de dados. Segundo \citeonline{Amaral2016}, um cabeçalho deve possuir o nome do conjunto de dados através do atributo relação, no caso, o nome do conjunto deve ser acompanhado pela marca @relation seguido com os atributos que compõem a relação com a marca @attribute. Como podemos ver representado na Figura 24 o arquivo utilizado para a mineração de dados, onde a marca @relation traz o nome do conjunto: Vestibulando de 2017. Se tem no total 34 atributos marcados por @relation, sendo todos os atributos do tipo categórico.
+Após o processo de conversão, internamente, o arquivo arff possui duas seções principais: um cabeçalho e uma área de dados. Segundo \citeonline{Amaral2016}, um cabeçalho deve possuir o nome do conjunto de dados através do atributo relação, no caso, o nome do conjunto deve ser acompanhado pela marca @relation seguido com os atributos que compõem a relação com a marca @attribute. Como podemos ver em parte dessas informações representado na Figura 24, o arquivo utilizado para a mineração de dados, onde a marca @relation traz o nome do conjunto: Vestibulando de 2017. Se tem no total 34 atributos marcados por @relation, sendo todos os atributos do tipo categórico.
 
 \par
 \begin{figure}[!htp]
@@ -83,7 +83,7 @@ A seção de área de dados tem o seu início definido pela marca @data, onde os
 \section{Selecionando os Atributos}
 
 \par
-Para muitos classificadores, quando recebem uma grande quantidade de atributos, acaba ocasionando um efeito de superajustes nos modelos que os tona ineficiente, segundo \citeonline{Amaral2016}, esse efeito é conhecido como maldição da dimensionalidade. Esse mesmo tipo de problema ocorre com os atributos dos dados socioeconômicos fornecidos para esse trabalho, no caso, para o algoritmo de classificação J48 que é utilizado. Para contornar esse problema foi utilizado a técnica de seleção de atributos que o Explorer do software WEKA disponibiliza, no qual descobre quais atributos são mais relevantes para a melhor generalização do modelo.
+Para muitos classificadores, quando recebem uma grande quantidade de atributos, acaba ocasionando um efeito de superajustes nos modelos que os tona ineficiente, segundo \citeonline{Amaral2016}, esse efeito é conhecido como maldição da dimensionalidade. Esse mesmo tipo de problema ocorre com os atributos dos dados socioeconômicos fornecidos para esse trabalho, no caso, para o algoritmo de classificação J48 que é utilizado (o algoritmo J48 foi usado neste trabalho, pelo fato dele ter obtido bons resultados em outros trabalhos que o utilizaram para a mineração de dados). Para contornar esse problema foi utilizado a técnica de seleção de atributos que o Explorer do software WEKA disponibiliza, no qual descobre quais atributos são mais relevantes para a melhor generalização do modelo.
 
 \par
 Para a execução da seleção de atributo no WEKA, é preciso selecionar o avaliador de atributo (\textit{Attribute Evaluator}) e o método de busca (\textit{Search Method}). Como demonstrado na Figura 26, o método de avaliação escolhido foi a opção \textit{CfsSubetEval}, onde ele considera a capacidade preditiva individual de cada recurso, diretamente com o grau de redundância entre eles e para o método de busca foi escolhido a opção \textit{GreedyStepwise} que faz uma busca avançada tanto pra frente quanto pra trás através do espaço de subconjuntos de atributos e também pode criar uma lista classificada de atributos, fazendo que sejam registrados na o ordem em que elas foram selecionadas \cite{WEKA}. Além do que, segundo \citeonline{Amaral2016}, esse método de busca é compatível com o algoritmo de avaliação de atributo escolhido. 
@@ -98,7 +98,7 @@ Para a execução da seleção de atributo no WEKA, é preciso selecionar o aval
 \end{figure}
 
 \par
-Nos primeiros testes de seleção, foi optado de usar tanto a opção de treino para todo o conjunto quanto a opção de \textit{cross-validation} com um número 10 de fold, nos 33 atributos relacionado ao atributo Aprovado, para os dois casos, o atributo mais relevante para a classificação era o estado onde o vestibulando residia como demonstrado na Figura 27. Então, para resolver esse problema, teve que ser feita a remoção de alguns atributos que eram desnecessários para esta pesquisa como o melhor horário para cursar a universidade, o que esperar do curso, como soube do processo seletivo e entre outros, depois de ter feito a remoção, de 33 atributos sobraram somente 22 para serem aplicados no algoritmo de seleção do WEKA.
+Nos primeiros testes de seleção, foi optado de usar tanto a opção de treino para todo o conjunto quanto a opção de \textit{cross-validation} com um número 10 de fold, nos 33 atributos relacionado ao atributo Aprovado, para os dois casos, o atributo mais relevante para a classificação era o estado onde o vestibulando residia como demonstrado na Figura 27. Contudo, esse atributo não era considerando relevante para a pesquisa deste trabalho, então, para resolver esse problema, teve que ser feita a remoção de alguns atributos que eram desnecessários para esta pesquisa, como por exemplo o melhor horário para cursar a universidade, o que esperar do curso, como soube do processo seletivo e entre outros, depois de ter feito a remoção, de 33 atributos sobraram somente 22 para serem aplicados no algoritmo de seleção do WEKA.
 
 \par
 \begin{figure}[!htp]
@@ -117,6 +117,7 @@ Mas antes de ser aplicado a técnica de seleção, foi feito os seguintes testes
 \par
 Juntando os atributos que os três trabalhos selecionaram, teve no total de 13 atributos como base: a escola que cursou o ensino médio, escolaridade da mãe, renda mensal familiar, quantidade de pessoas que moram com a pessoa, idade do candidato, estado civil, com quem reside, escolaridade do pai, ocupação do pai, ocupação da mãe, idade que começou a trabalhar, frequentou algum cursinho e cor de pele. Aplicando o algoritmo de seleção nesses 13 atributos mais o atributo Aprovados, teve como resultado, que apenas 5 deles relacionado ao atributo Aprovado, estavam acima do 70\%  (mais relevantes para a classificação), como demonstrado na Figura 28.
 
+
 \par
 \begin{figure}[!htp]
 	\begin{center}
@@ -125,6 +126,18 @@ Juntando os atributos que os três trabalhos selecionaram, teve no total de 13 a
 	\end{center}
     \legend{Fonte: Próprio autor.}
 \end{figure}
+
+\par
+\textcolor{red}{}
+
+\par
+\textcolor{red}{}
+
+\par
+\textcolor{red}{}
+
+\par
+\textcolor{red}{}
 
 \par
 Depois do teste que foi feito com os atributos base, foi acrescentado mais um atributo ao teste, para poder mais uma vez executar a seleção de atributos e depois analisar os resultados, isso foi feito sucessivamente até chegar aos 22 atributos. Depois de todo o processo de teste, no final, teve como resultado que os atributos mais relevantes (que ultrapassavam de 70\%) que foram obtidos nos dados fornecidos eram praticamente diferentes dos dados selecionados para o teste base, como demonstrado na Figura 29. O motivo disso é que  como os dados desse projeto possui algumas diferenças com os dados que foram utilizados nos trabalhos correlatos, os atributos que foram selecionados por eles é mais relevantes nos trabalhos dos mesmos do que para esse projeto.
@@ -137,10 +150,6 @@ Depois do teste que foi feito com os atributos base, foi acrescentado mais um at
 	\end{center}
     \legend{Fonte: Próprio autor.}
 \end{figure}
-
-\par
-\textcolor{red}{}
-
 
 \par
 Observando a Figura 29,  os atributos mais relevantes foram: idade do candidato, a cor de pele, se possui alguma deficiência, se frequentou algum cursinho pré-vestibular, ocupação do pai, se o candidato trabalhava, a ocupação do candidato, com quem ele residia, quantidades de pessoas que moram com ele e por último o meio de transporte que ele utiliza. Para ter certeza que os atributos selecionados continuariam com a taxa de relevância acima dos 70\%, foi aplicada a seleção de atributos mais uma vez e o resultados obtidos foi que apenas 8 dos 10 atributos selecionados anteriormente, mantiveram acima dos 70\%, como apresentado na Figura 30.
